@@ -1,0 +1,20 @@
+{
+  "name": "scharts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "parcel index.html",
+    "build": "parcel build index.js --out-dir dist/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facejiong/sCharts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/facejiong/sCharts/issues"
+  },
+  "homepage": "https://github.com/facejiong/sCharts#readme"
+}
