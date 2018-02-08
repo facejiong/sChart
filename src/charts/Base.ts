@@ -1,27 +1,29 @@
+import {Option} from '../Option'
+
 export default class {
-	private type: string = 'base';
-	private id: string = '';
-	private width: number = 320;
-	private height: number = 240;
-	private title: string = '';
-	private subtitle: string = '';
-	private colors: number;
-	private has_legend: number;
-	private data: string;
-	constructor(option: object) {
-		this.type = option.type;
+	protected id: Object;
+	protected type: string;
+	protected data: any;
+	protected width: number;
+	protected height: number;
+	protected title: string;
+	protected subtitle: string;
+	protected colors: Array<string>;
+
+	constructor(option: Option) {
 		this.id = document.querySelector('#' + option.id);
-		this.width = option.width;
-		this.height = option.height;
-		this.title = option.title;
-		this.subtitle = option.subtitle;
-		this.render()
+		this.type = 'base';
+		this.data = option.data;
+		this.width = option.width || 320;
+		this.height = option.height || 240;
+		this.title = option.title || '';
+		this.subtitle = option.subtitle || '';
 	}
-	private setWidthHeight () {
+	protected setWidthHeight () {
 		this.id.style.height = this.height;
 		this.id.style.width = this.width;
 	}
-	public render() {
+	protected render() {
 		console.log('render')
 		this.setWidthHeight()
 	}

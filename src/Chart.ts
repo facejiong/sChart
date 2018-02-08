@@ -5,6 +5,8 @@ import {PercentageChart} from './charts/PercentageChart';
 import {PieChart} from './charts/PieChart';
 import {Heatmap} from './charts/Heatmap';
 
+import {Option} from './Option';
+
 const typeCharts = {
 	line: LineChart,
 	bar: BarChart,
@@ -15,7 +17,8 @@ const typeCharts = {
 }
 
 export class Chart {
-	constructor(option: object) {
+	constructor(option: Option) {
 		return new typeCharts[option.type](option)
 	}
 }
+
