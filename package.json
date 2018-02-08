@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/facejiong/sCharts/issues"
   },
-  "homepage": "https://github.com/facejiong/sCharts#readme"
+  "homepage": "https://github.com/facejiong/sCharts#readme",
+  "devDependencies": {
+    "typescript": "^2.7.1"
+  }
 }

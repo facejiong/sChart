@@ -17,16 +17,17 @@ const data = {
 }
 
 const chart = new Chart({
-	parent: "#chart", // or a DOM element
-	title: "My Awesome Chart",
+	id: "my-chart",
+	title: "My Chart",
+	subtitle: 'My Sub Chart',
 	data: data,
-	type: 'bar', // or 'line', 'scatter', 'pie', 'percentage'
+	type: 'pie', // or 'line', 'scatter', 'pie', 'percentage'
 	height: 250,
-
+	width: 320,
 	colors: ['#7cd6fd', '#743ee2'],
 
 	format_tooltip_x: d => (d + '').toUpperCase(),
 	format_tooltip_y: d => d + ' pts'
 })
-
+console.log(chart)
 

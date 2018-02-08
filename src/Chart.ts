@@ -1,9 +1,9 @@
-import {BarChart} from './chart/BarChart';
-import {LineChart} from './chart/LineChart';
-import {ScatterChart} from './chart/ScatterChart';
-import {PercentageChart} from './chart/PercentageChart';
-import {PieChart} from './chart/PieChart';
-import {Heatmap} from './chart/Heatmap';
+import {BarChart} from './charts/BarChart';
+import {LineChart} from './charts/LineChart';
+import {ScatterChart} from './charts/ScatterChart';
+import {PercentageChart} from './charts/PercentageChart';
+import {PieChart} from './charts/PieChart';
+import {Heatmap} from './charts/Heatmap';
 
 const typeCharts = {
 	line: LineChart,
@@ -14,7 +14,7 @@ const typeCharts = {
 	pie: PieChart
 }
 
-export default class {
+export class Chart {
 	constructor(option: object) {
 		return new typeCharts[option.type](option)
 	}

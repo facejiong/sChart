@@ -1,6 +1,6 @@
 import Base from './Base'
 
-export default class extends Base {
+export class PercentageChart extends Base {
 	constructor(option: Object) {
 		super(option)
 	}
