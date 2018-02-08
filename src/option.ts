@@ -1,7 +1,15 @@
-// export default class {
-// 	private parent:string "#chart";
-// 	title: "My Awesome Chart",
-// 	data: data,
-// 	type: 'bar', // or 'line', 'scatter', 'pie', 'percentage'
-// 	height: 250,
-// }
+export interface Option {
+	// shared
+	id: string;
+	type: string;
+	data: any;
+	width: number;
+	height: number;
+	title: string;
+	subtitle: string;
+	colors: Array<string>;
+	opacity: number;
+	// pie
+	radius: number;
+	clockWise: boolean; // 顺时针
+}
