@@ -1,4 +1,5 @@
 import Base from './Base'
+import {createText} from '../plugins/ElementFactory'
 import {Option} from '../Option'
 import {COlOR_CLASSFICATION} from '../plugins/ColorSwatches'
 
@@ -6,9 +7,9 @@ export class PieChart extends Base {
 	private centerX: number;
 	private centerY: number;
 	private opacity: number;
-	private colors: Array<string>;
 	private radius: number;
 	private clockWise: boolean;
+
 	constructor(option: Option) {
 		super(option)
 		this.type = option.type;
@@ -29,6 +30,8 @@ export class PieChart extends Base {
 		const {radius, clockWise} = this;
 		let grand_total = this.data.reduce((accumulator, currentValue) => accumulator + currentValue.value, 0);
 		console.log(grand_total);
+		let tx = createText('', 10, 10, 'sss')
+		this.id.appendChild(tx)
 		// const prevSlicesProperties = this.slicesProperties || [];
 		// this.slices = [];
 		// this.elements_to_animate = [];
