@@ -19,12 +19,11 @@ export default class {
 		this.title = option.title || '';
 		this.subtitle = option.subtitle || '';
 	}
+	protected render() {
+		console.log('base render')
+	}
 	protected setWidthHeight () {
 		this.id.style.height = this.height;
 		this.id.style.width = this.width;
-	}
-	protected render() {
-		console.log('render')
-		this.setWidthHeight()
 	}
 }

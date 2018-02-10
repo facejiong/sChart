@@ -51,7 +51,6 @@ export class PieChart extends Base {
 			const startAngle = curAngle;
 			const diffAngle = (current.value / totalValue) * FULL_ANGLE;
 			const endAngle = curAngle = curAngle + diffAngle;
-			console.log(diffAngle)
 			const startPosition = PieChart.getPositionByAngle(startAngle,radius);
 			const endPosition = PieChart.getPositionByAngle(endAngle,radius);
 			const curPath = this.makeArcPath(startPosition, endPosition, diffAngle);

@@ -1,5 +1,7 @@
 interface Attributes {
 	className?: string;
+	width?: number;
+	height?: number;
 	x?: number;
 	y?: number,
 	dy?: string,
@@ -36,6 +38,19 @@ export function createElement(tag: string, o: Attributes) {
 	return element;
 }
 
+export function createRect(className: string, width: number, height: number, x: number, y: number, stroke='none', fill='none') {
+	return createElement('rect', {
+		className: className,
+		width: width,
+		height: height,
+		x: x,
+		y: y,
+		styles: {
+			stroke: stroke,
+			fill: fill
+		}
+	});
+}
 
 export function createText(className: string, x: number, y: number, content: string) {
 	return createElement('text', {
