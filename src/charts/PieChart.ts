@@ -1,14 +1,17 @@
 import Base from './Base'
-import {createText} from '../plugins/ElementFactory'
+import {createText, createPath} from '../plugins/ElementFactory'
 import {Option} from '../Option'
 import {COlOR_CLASSFICATION} from '../plugins/ColorSwatches'
+
+const ANGLE_RATIO = Math.PI / 180;
+const FULL_ANGLE = 360;
 
 export class PieChart extends Base {
 	private centerX: number;
 	private centerY: number;
 	private opacity: number;
 	private radius: number;
-	private clockWise: boolean;
+	private sortDataType: string;
 
 	constructor(option: Option) {
 		super(option)
@@ -17,62 +20,54 @@ export class PieChart extends Base {
 		this.centerY = this.height / 2;
 		this.opacity = option.opacity || 0.8;
 		this.colors = option.colors || COlOR_CLASSFICATION;
-		this.radius = option.radius || (this.height > this.width ? this.width * 0.6 : this.height * 0.6);
-		this.clockWise = option.clockWise || true;
+		this.radius = option.radius || (this.height > this.width ? this.width * 0.3 : this.height * 0.3);
+		this.sortDataType = option.sortDataType || 'descending';
+
 		this.render()
 	}
 	public render() {
 		console.log('render')
-		this.setWidthHeight()
-		this.drawPie()
+		this.setWidthHeight();
+		// 顺序 逆序
+		this.sortData();
+		this.drawPie();
+	}
+	private sortData () {
+		if (this.sortDataType === 'descending') {
+			this.data.sort((a, b) => {
+				return a.value - b.value
+			})
+		} else if (this.sortDataType === 'ascending') {
+			this.data.sort((a, b) => {
+				return b.value - a.value
+			})
+		}
 	}
 	private drawPie() {
-		const {radius, clockWise} = this;
-		let grand_total = this.data.reduce((accumulator, currentValue) => accumulator + currentValue.value, 0);
-		console.log(grand_total);
-		let tx = createText('', 10, 10, 'sss')
-		this.id.appendChild(tx)
-		// const prevSlicesProperties = this.slicesProperties || [];
-		// this.slices = [];
-		// this.elements_to_animate = [];
-		// this.slicesProperties = [];
-		// let curAngle = 180 - this.startAngle;
-		// this.data.map((total, i) => {
-		// 	const startAngle = curAngle;
-		// 	const originDiffAngle = (total / this.grand_total) * FULL_ANGLE;
-		// 	const diffAngle = clockWise ? -originDiffAngle : originDiffAngle;
-		// 	const endAngle = curAngle = curAngle + diffAngle;
-		// 	const startPosition = PieChart.getPositionByAngle(startAngle,radius);
-		// 	const endPosition = PieChart.getPositionByAngle(endAngle,radius);
-		// 	const prevProperty = init && prevSlicesProperties[i];
-		// 	let curStart,curEnd;
-		// 	if(init){
-		// 		curStart = prevProperty?prevProperty.startPosition : startPosition;
-		// 		curEnd = prevProperty? prevProperty.endPosition : startPosition;
-		// 	}else{
-		// 		curStart = startPosition;
-		// 		curEnd = endPosition;
-		// 	}
-		// 	const curPath = this.makeArcPath(curStart,curEnd);
-		// 	let slice = makePath(curPath, 'pie-path', 'none', this.colors[i]);
-		// 	slice.style.transition = 'transform .3s;';
-		// 	this.draw_area.appendChild(slice);
-
-		// 	this.slices.push(slice);
-		// 	this.slicesProperties.push({
-		// 		startPosition,
-		// 		endPosition,
-		// 		value: total,
-		// 		total: this.grand_total,
-		// 		startAngle,
-		// 		endAngle,
-		// 		angle:diffAngle
-		// 	});
-
-		// });
+		const{centerX,centerY,radius} = this;
+		let totalValue = this.data.reduce((accumulator, current) => accumulator + current.value, 0);
+		let curAngle = 180;
+		this.data.map((current, i) => {
+			const startAngle = curAngle;
+			const diffAngle = (current.value / totalValue) * FULL_ANGLE;
+			const endAngle = curAngle = curAngle + diffAngle;
+			console.log(diffAngle)
+			const startPosition = PieChart.getPositionByAngle(startAngle,radius);
+			const endPosition = PieChart.getPositionByAngle(endAngle,radius);
+			const curPath = this.makeArcPath(startPosition, endPosition, diffAngle);
+			let slice = createPath(curPath, 'pie-path', 'none', this.colors[i]);
+			slice.style.transition = 'transform .3s;';
+			this.id.appendChild(slice);
+		})
 	}
-	makeArcPath(startPosition,endPosition){
-		const{centerX,centerY,radius,clockWise} = this;
-		return `M${centerX} ${centerY} L${centerX+startPosition.x} ${centerY+startPosition.y} A ${radius} ${radius} 0 0 ${clockWise ? 1 : 0} ${centerX+endPosition.x} ${centerY+endPosition.y} z`;
+	static getPositionByAngle(angle, radius){
+		return {
+			x:Math.sin(angle * ANGLE_RATIO) * radius,
+			y:Math.cos(angle * ANGLE_RATIO) * radius,
+		};
+	}
+	makeArcPath(startPosition, endPosition, angle){
+		const{centerX,centerY,radius} = this;
+		return `M${centerX} ${centerY} L${centerX+startPosition.x} ${centerY+startPosition.y} A ${radius} ${radius} 0 ${angle > 180 ? 1 : 0} 0 ${centerX+endPosition.x} ${centerY+endPosition.y} z`;
 	}
 }

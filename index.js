@@ -12,6 +12,10 @@ const pieData = [
 	{
 		label: 'c',
 		value: 500
+	},
+		{
+		label: 'd',
+		value: 400
 	}
 ]
 
@@ -23,7 +27,7 @@ const chart = new Chart({
 	type: 'pie', // or 'line', 'scatter', 'pie', 'percentage'
 	height: 250,
 	width: 320,
-
+	sortDataType: 'descending', // ascending descending
 	format_tooltip_x: d => (d + '').toUpperCase(),
 	format_tooltip_y: d => d + ' pts'
 })

@@ -11,5 +11,11 @@ export interface Option {
 	opacity: number;
 	// pie
 	radius: number;
-	clockWise: boolean; // 顺时针
+	sortDataType: string; // 升序 降序
+}
+
+export interface Position {
+	// shared
+	x: number;
+	y: number;
 }

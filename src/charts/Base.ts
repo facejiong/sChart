@@ -1,7 +1,7 @@
 import {Option} from '../Option'
 
 export default class {
-	protected id: Object;
+	protected id: any;
 	protected type: string;
 	protected data: any;
 	protected width: number;

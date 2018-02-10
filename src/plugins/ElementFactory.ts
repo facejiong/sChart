@@ -12,7 +12,7 @@ interface Styles {
 	fill?: string;
 }
 
-function createElement(tag: string, o: Attributes) {
+export function createElement(tag: string, o: Attributes) {
 	var element = document.createElementNS("http://www.w3.org/2000/svg", tag);
 
 	for (var i in o) {
@@ -35,6 +35,7 @@ function createElement(tag: string, o: Attributes) {
 	}
 	return element;
 }
+
 
 export function createText(className: string, x: number, y: number, content: string) {
 	return createElement('text', {
