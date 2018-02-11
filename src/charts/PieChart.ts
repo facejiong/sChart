@@ -12,6 +12,7 @@ export class PieChart extends Base {
 	private opacity: number;
 	private radius: number;
 	private sortDataType: string;
+	private slices: Array<any>;
 
 	constructor(option: Option) {
 		super(option)
@@ -22,6 +23,7 @@ export class PieChart extends Base {
 		this.colors = option.colors || COlOR_CLASSFICATION;
 		this.radius = option.radius || (this.height > this.width ? this.width * 0.3 : this.height * 0.3);
 		this.sortDataType = option.sortDataType || 'descending';
+		this.slices = [];
 
 		this.render()
 	}
@@ -56,6 +58,7 @@ export class PieChart extends Base {
 			const endPosition = PieChart.getPositionByAngle(endAngle,radius);
 			const curPath = this.makeArcPath(startPosition, endPosition, diffAngle);
 			let slice = createPath(curPath, 'pie-path', 'none', this.colors[i]);
+			this.slices.push(slice)
 			slice.style.transition = 'transform .3s;';
 			this.id.appendChild(slice);
 		})
@@ -72,12 +75,18 @@ export class PieChart extends Base {
 	}
 
 	private addTooltips() {
-		this.id.addEventListener('mousemove',this.mouseMove);
-		this.id.addEventListener('mouseleave',this.mouseLeave);
+		this.slices.map((current) => {
+			current.addEventListener('mousemove',this.mouseMove);
+			current.addEventListener('mouseleave',this.mouseLeave);
+		})
 	}
-	private	mouseMove(e) {
+	private	mouseMove = (e) => {
 		console.log('mouseMove')
-		console.log(e)
+		this.slices.map((current) => {
+			if (e.target === current) {
+				console.log(current)
+			}
+		})
 	}
 	private mouseLeave(){
 		console.log('mouseLeave')
