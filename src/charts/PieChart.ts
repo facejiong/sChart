@@ -1,7 +1,7 @@
 import Base from './Base'
 import {createText, createPath} from '../plugins/ElementFactory'
 import {Option} from '../Option'
-import {COlOR_CLASSFICATION} from '../plugins/ColorSwatches'
+import {COlOR_CLASSFICATION, hoverColor} from '../plugins/ColorSwatches'
 
 const ANGLE_RATIO = Math.PI / 180;
 const FULL_ANGLE = 360;
@@ -31,6 +31,7 @@ export class PieChart extends Base {
 		// 顺序 逆序
 		this.sortData();
 		this.drawPie();
+		this.addTooltips()
 	}
 	private sortData () {
 		if (this.sortDataType === 'descending') {
@@ -68,5 +69,17 @@ export class PieChart extends Base {
 	makeArcPath(startPosition, endPosition, angle){
 		const{centerX,centerY,radius} = this;
 		return `M${centerX} ${centerY} L${centerX+startPosition.x} ${centerY+startPosition.y} A ${radius} ${radius} 0 ${angle > 180 ? 1 : 0} 0 ${centerX+endPosition.x} ${centerY+endPosition.y} z`;
+	}
+
+	private addTooltips() {
+		this.id.addEventListener('mousemove',this.mouseMove);
+		this.id.addEventListener('mouseleave',this.mouseLeave);
+	}
+	private	mouseMove(e) {
+		console.log('mouseMove')
+		console.log(e)
+	}
+	private mouseLeave(){
+		console.log('mouseLeave')
 	}
 }

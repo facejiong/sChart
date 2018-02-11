@@ -28,6 +28,25 @@ export const COlOR_SWATCHES = {
 	COLOR_CONTINUOUS_SEMANTIC_GRAY,
 	COLOR_HEATMAP
 }
+
+function limitColor(r){
+	if (r > 255) return 255;
+	else if (r < 0) return 0;
+	return r;
+}
+
+export function hoverColor(color, amt) {
+	let usePound = false;
+	if (color[0] == "#") {
+		color = color.slice(1);
+		usePound = true;
+	}
+	let num = parseInt(color,16);
+	let r = limitColor((num >> 16) + amt);
+	let b = limitColor(((num >> 8) & 0x00FF) + amt);
+	let g = limitColor((num & 0x0000FF) + amt);
+	return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+}
 // OPACITY
 // line 1
 // middle area 0.8 -- bar,pie,
