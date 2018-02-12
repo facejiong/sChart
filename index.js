@@ -47,8 +47,8 @@ const chart = new Chart({
 	id: "my-chart",
 	title: "My Chart",
 	// subtitle: 'My Sub Chart',
-	data: pieData,
-	type: 'pie', // or 'line', 'scatter', 'pie', 'percentage'
+	data: barData,
+	type: 'bar', // or 'line', 'scatter', 'pie', 'percentage'
 	height: 250,
 	width: 320,
 	sortDataType: 'descending', // ascending descending none

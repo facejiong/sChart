@@ -3,8 +3,12 @@ interface Attributes {
 	width?: number;
 	height?: number;
 	x?: number;
-	y?: number,
-	dy?: string,
+	y?: number;
+	x1?: number;
+	y1?: number;
+	x2?: number;
+	y2?: number;
+	dy?: string;
 	innerHTML?: string;
 	d?: string;
 	styles?: Styles;
@@ -48,6 +52,19 @@ export function createRect(className: string, width: number, height: number, x: 
 		styles: {
 			stroke: stroke,
 			fill: fill
+		}
+	});
+}
+
+export function createLine(className: string, x1: number, y1: number, x2: number, y2: number, stroke='none') {
+	return createElement('line', {
+		className: className,
+		x1: x1,
+		y1: y1,
+		x2: x2,
+		y2: y2,
+		styles: {
+			stroke: stroke
 		}
 	});
 }
