@@ -53,7 +53,12 @@ const chart = new Chart({
 	width: 320,
 	sortDataType: 'descending', // ascending descending none
 	format_tooltip_x: d => (d + '').toUpperCase(),
-	format_tooltip_y: d => d + ' pts'
+	format_tooltip_y: d => d + ' pts',
+	axis: {
+		color: 'red',
+		xAxisShow: true,
+		yAxisShow: true,
+	}
 })
 console.log(chart)
 

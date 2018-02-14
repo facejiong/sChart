@@ -15,10 +15,16 @@ export class BarChart extends Base {
 		let max = 0;
 		datasets.map((current) => {
 			current.values.map((cur) => {
-				console.log(cur)
+				// console.log(cur)
 				min = Math.min(cur, min)
 				max = Math.max(cur, max)
 			})
+		})
+		const axis = new Axis(this.width, this.height, this.padding);
+		const axisElements = axis.render();
+		console.log(axisElements)
+		axisElements.map((current) => {
+			this.id.appendChild(current);
 		})
 		console.log(min)
 		console.log(max)

@@ -9,6 +9,7 @@ export default class {
 	protected title: string;
 	protected subtitle: string;
 	protected colors: Array<string>;
+	protected padding: Array<number>;
 
 	constructor(option: Option) {
 		this.id = document.querySelector('#' + option.id);
@@ -18,6 +19,7 @@ export default class {
 		this.height = option.height || 240;
 		this.title = option.title || '';
 		this.subtitle = option.subtitle || '';
+		this.padding = option.padding || [10, 10, 10 ,10];
 	}
 	protected render() {
 		console.log('base render')

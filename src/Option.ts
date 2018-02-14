@@ -9,6 +9,7 @@ export interface Option {
 	subtitle: string;
 	colors: Array<string>;
 	opacity: number;
+	padding: Array<number>; // top, right, bottom, left
 	// pie
 	radius: number;
 	sortDataType: string; // 升序 降序
