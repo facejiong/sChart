@@ -11,12 +11,13 @@ interface Attributes {
 	dy?: string;
 	innerHTML?: string;
 	d?: string;
-	styles?: Styles;
+	styles?: any;
 }
-interface Styles {
-	stroke?: string;
-	fill?: string;
-}
+// interface Styles {
+// 	stroke?: string;
+// 	fill?: string;
+// 	'stroke-width'?: string;
+// }
 
 export function createElement(tag: string, o: Attributes) {
 	var element = document.createElementNS("http://www.w3.org/2000/svg", tag);
@@ -56,7 +57,7 @@ export function createRect(className: string, width: number, height: number, x: 
 	});
 }
 
-export function createLine(className: string, x1: number, y1: number, x2: number, y2: number, stroke='none') {
+export function createLine(className: string, x1: number, y1: number, x2: number, y2: number, stroke='none', strokeWidth=1) {
 	return createElement('line', {
 		className: className,
 		x1: x1,
@@ -64,7 +65,8 @@ export function createLine(className: string, x1: number, y1: number, x2: number
 		x2: x2,
 		y2: y2,
 		styles: {
-			stroke: stroke
+			stroke: stroke,
+			'stroke-width' : strokeWidth
 		}
 	});
 }
