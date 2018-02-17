@@ -68,7 +68,7 @@ export class BarChart extends Base {
 				let barHeight = this.height * curValue / heightValue;
 				console.log(groupOffset)
 				let positionY = barHeight > 0 ? this.zeroY - barHeight : this.zeroY;
-				let positionX = barOffset * (indexValue + 1) + groupOffset;
+				let positionX = barOffset * (indexValue + 0.25) + groupOffset;
 				let slice = createRect('bar-rect', barWidth,  Math.abs(barHeight),
 					positionX, positionY, 'none', this.colors[indexDataset]);
 				barGroupElement.appendChild(slice)
