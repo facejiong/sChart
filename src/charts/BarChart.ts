@@ -1,8 +1,8 @@
-import Base from './Base'
-import {Axis} from '../plugins/Axis'
+import Base from './Base';
+import {Axis} from '../plugins/Axis';
 import { Option, Position } from '../Option';
-import {createText, createRect, createElement} from '../plugins/ElementFactory'
-import {COlOR_CLASSFICATION} from '../plugins/ColorSwatches'
+import {createText, createRect, createElement} from '../plugins/ElementFactory';
+import {COlOR_CLASSFICATION} from '../plugins/ColorSwatches';
 
 export class BarChart extends Base {
 	private min: number = 0;
@@ -73,7 +73,7 @@ export class BarChart extends Base {
 					positionX, positionY, 'none', this.colors[indexDataset]);
 				barGroupElement.appendChild(slice)
 			})
-			this.id.appendChild(barGroupElement)
+			this.groupChartElement.appendChild(barGroupElement)
 		})
 		console.log(heightValue)
 	}
