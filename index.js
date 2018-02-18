@@ -45,31 +45,36 @@ let barData = {
 const scatterData = [
 	{
 		label: 'a',
-		value: 234,
+		x: 23,
+		y: 34,
 	},
 	{
 		label: 'b',
-		value: 100
+		x: 234,
+		y: 94,
 	},
 	{
 		label: 'c',
-		value: 500
+		x: 24,
+		y: 14,
 	},
 		{
 		label: 'd',
-		value: 400
+		x: 234,
+		y: 300,
 	},
 		{
 		label: 'e',
-		value: -5
+		x: 234,
+		y: 341,
 	}
 ]
 const chart = new Chart({
 	id: "my-chart",
 	title: "My Chart",
 	// subtitle: 'My Sub Chart',
-	data: barData,
-	type: 'line', // or 'line', 'scatter', 'pie', 'percentage'
+	data: scatterData,
+	type: 'scatter', // or 'line', 'scatter', 'pie', 'percentage'
 	height: 250,
 	width: 320,
 	sortDataType: 'descending', // ascending descending none
