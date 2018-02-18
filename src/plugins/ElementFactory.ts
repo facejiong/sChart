@@ -9,15 +9,13 @@ interface Attributes {
 	x2?: number;
 	y2?: number;
 	dy?: string;
+	cx?: number;
+	cy?: number;
+	r?: number;
 	innerHTML?: string;
 	d?: string;
 	styles?: any;
 }
-// interface Styles {
-// 	stroke?: string;
-// 	fill?: string;
-// 	'stroke-width'?: string;
-// }
 
 export function createElement(tag: string, o: Attributes) {
 	var element = document.createElementNS("http://www.w3.org/2000/svg", tag);
@@ -50,6 +48,19 @@ export function createRect(className: string, width: number, height: number, x: 
 		height: height,
 		x: x,
 		y: y,
+		styles: {
+			stroke: stroke,
+			fill: fill
+		}
+	});
+}
+
+export function createCircle(className: string, x: number, y: number, r: number, stroke='none', fill='none') {
+	return createElement('circle', {
+		className: className,
+		cx: x,
+		cy: y,
+		r: r,
 		styles: {
 			stroke: stroke,
 			fill: fill
