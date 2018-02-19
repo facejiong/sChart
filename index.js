@@ -47,26 +47,36 @@ const scatterData = [
 		label: 'a',
 		x: 23,
 		y: 34,
+		r: 8,
+		color: 'rgba(167, 232, 180, 0.5)'
 	},
 	{
 		label: 'b',
 		x: 234,
 		y: 94,
+		r: 8,
+		color: 'rgba(167, 232, 180, 0.5)'
 	},
 	{
 		label: 'c',
 		x: 24,
 		y: 14,
+		r: 32,
+		color: 'rgba(167, 232, 180, 0.8)',
 	},
 		{
 		label: 'd',
 		x: 234,
 		y: 300,
+		r: 8,
+		color: 'rgba(167, 232, 180, 0.5)'
 	},
 		{
 		label: 'e',
 		x: 234,
 		y: 341,
+		r: 6,
+		color: 'rgba(167, 232, 180, 0.5)'
 	}
 ]
 const chart = new Chart({

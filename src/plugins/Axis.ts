@@ -27,7 +27,7 @@ export class Axis {
 		this.horizontalData = horizontalData;
 		this.verticalData = verticalData;
 		this.horizontalXPosition = horizontalXPosition || 'left';
-		this.verticalYPosition = verticalYPosition || 'bottom';;
+		this.verticalYPosition = verticalYPosition || 'bottom';
 	}
 	public render() {
 		this.renderHorizontal()

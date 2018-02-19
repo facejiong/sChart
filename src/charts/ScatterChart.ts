@@ -81,7 +81,7 @@ export class ScatterChart extends Base {
 			console.log(x)
 			console.log(y)
 			let slice = createCircle('chart-circle', x,  positionY,
-					4, 'none', '#A7E8B4');
+					cur.r, 'none', cur.color);
 			this.groupChartElement.appendChild(slice)
 
 		})
