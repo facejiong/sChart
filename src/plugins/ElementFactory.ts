@@ -11,6 +11,8 @@ interface Attributes {
 	dy?: string;
 	cx?: number;
 	cy?: number;
+	rx?: number;
+	ry?: number;
 	r?: number;
 	innerHTML?: string;
 	d?: string;
@@ -41,11 +43,14 @@ export function createElement(tag: string, o: Attributes) {
 	return element;
 }
 
-export function createRect(className: string, width: number, height: number, x: number, y: number, stroke='none', fill='none') {
+export function createRect(className: string, width: number, height: number, x: number, y: number,
+	rx: number, ry: number, stroke='none', fill='none') {
 	return createElement('rect', {
 		className: className,
 		width: width,
 		height: height,
+		rx: rx,
+		ry: ry,
 		x: x,
 		y: y,
 		styles: {

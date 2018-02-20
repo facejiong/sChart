@@ -1,7 +1,8 @@
 import Base from './Base'
 import {createText, createPath} from '../plugins/ElementFactory'
 import {Option} from '../Option'
-import {COlOR_CLASSFICATION, hoverColor} from '../plugins/ColorSwatches'
+import { COlOR_CLASSFICATION, COLOR_CONTINUOUS_SEMANTIC_DEEPPINK, hoverColor } from '../plugins/ColorSwatches';
+import {Tips} from '../plugins/Tips'
 
 const ANGLE_RATIO = Math.PI / 180;
 const FULL_ANGLE = 360;
@@ -13,6 +14,7 @@ export class PieChart extends Base {
 	private radius: number;
 	private sortDataType: string;
 	private slices: Array<any>;
+	private tips: any;
 
 	constructor(option: Option) {
 		super(option)
@@ -75,20 +77,25 @@ export class PieChart extends Base {
 	}
 
 	private addTooltips() {
+		this.tips = new Tips();
 		this.slices.map((current) => {
 			current.addEventListener('mousemove',this.mouseMove);
 			current.addEventListener('mouseleave',this.mouseLeave);
 		})
 	}
 	private	mouseMove = (e) => {
-		console.log('mouseMove')
+		console.log('mouseMove');
+		console.log(e);
 		this.slices.map((current) => {
 			if (e.target === current) {
-				console.log(current)
+				console.log(current.style.fill);
+				console.log(current);
+				this.tips.update();
 			}
 		})
 	}
 	private mouseLeave(){
-		console.log('mouseLeave')
+		console.log('mouseLeave');
+		this.tips.hide();
 	}
 }
