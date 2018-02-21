@@ -35,7 +35,7 @@ function limitColor(r){
 	return r;
 }
 
-export function hoverColor(color, amt) {
+export function hoverColor(color: string, amt: number) {
 	let usePound = false;
 	if (color[0] == "#") {
 		color = color.slice(1);

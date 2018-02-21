@@ -14,7 +14,9 @@ export class PieChart extends Base {
 	private radius: number;
 	private sortDataType: string;
 	private slices: Array<any>;
+	private labels: Array<string>;
 	private tips: any;
+	private currentSlice: any;
 
 	constructor(option: Option) {
 		super(option)
@@ -26,6 +28,7 @@ export class PieChart extends Base {
 		this.radius = option.radius || (this.height > this.width ? this.width * 0.3 : this.height * 0.3);
 		this.sortDataType = option.sortDataType || 'descending';
 		this.slices = [];
+		this.labels = [];
 
 		this.render()
 	}
@@ -60,7 +63,8 @@ export class PieChart extends Base {
 			const endPosition = PieChart.getPositionByAngle(endAngle,radius);
 			const curPath = this.makeArcPath(startPosition, endPosition, diffAngle);
 			let slice = createPath(curPath, 'pie-path', 'none', this.colors[i]);
-			this.slices.push(slice)
+			this.slices.push(slice);
+			this.labels.push(`${current.label}: ${parseInt(String(diffAngle))}%`);
 			slice.style.transition = 'transform .3s;';
 			this.id.appendChild(slice);
 		})
@@ -84,18 +88,17 @@ export class PieChart extends Base {
 		})
 	}
 	private	mouseMove = (e) => {
-		console.log('mouseMove');
-		console.log(e);
-		this.slices.map((current) => {
+		this.slices.map((current, index) => {
 			if (e.target === current) {
-				console.log(current.style.fill);
-				console.log(current);
-				this.tips.update();
+				let hasUpdateData = this.currentSlice === current ? false : true;
+				// console.log(current.style.fill);
+				// current.style.fill = hoverColor(current.style.fill, 15);
+				this.tips.update([{color: current.style.fill, text: this.labels[index]}], e.x, e.y, hasUpdateData);
+				this.currentSlice = current;
 			}
 		})
 	}
-	private mouseLeave(){
-		console.log('mouseLeave');
+	private mouseLeave = () => {
 		this.tips.hide();
 	}
 }

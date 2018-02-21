@@ -43,7 +43,7 @@ export class Tips {
 			let curTextContainer = document.createElement('span');
 			curTextContainer.style.display = 'inline-block';
 			curTextContainer.style.color = '#fff';
-			curTextContainer.style.fontSize = '18px';
+			curTextContainer.style.fontSize = '14px';
 			curTextContainer.innerHTML = cur.text;
 			// curColorContainer.style.margin = '0 8px 0 0';
 			curContainer.appendChild(curColorContainer);

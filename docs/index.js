@@ -2,24 +2,20 @@ import { Chart } from '../src/Chart'
 
 const pieData = [
 	{
-		label: 'a',
+		label: '实例1',
 		value: 234
 	},
 	{
-		label: 'b',
+		label: '实例2',
 		value: 100
 	},
 	{
-		label: 'c',
+		label: '实例3',
 		value: 500
 	},
 		{
-		label: 'd',
+		label: '实例4',
 		value: 400
-	},
-		{
-		label: 'e',
-		value: -5
 	}
 ]
 
