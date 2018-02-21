@@ -11,6 +11,7 @@ interface Point {
 export default class {
 	protected container: any;
 	protected svgElement: any;
+	protected axisElement: any;
 	protected type: string;
 	protected data: any;
 	protected containerWidth: number;
@@ -48,6 +49,7 @@ export default class {
 		this.setWidthHeight();
 		this.renderTitle();
 		this.renderSvg();
+		this.setLayout();
 	}
 	protected setWidthHeight () {
 		this.container.style.display = 'inline-block';
@@ -73,9 +75,9 @@ export default class {
 			y: this.svgHeight
 		};
 	}
-	protected renderAxis(horizontalData: Array<any>, verticalData: Array<any>) {
-		let top = 0;
-		let right = 0;
+	protected setLayout() {
+		let top = 30;
+		let right = 30;
 		let bottom = 30;
 		let left = 30;
 		this.elementPoint0 = {
@@ -94,10 +96,6 @@ export default class {
 			x: left,
 			y: this.svgHeight - bottom
 		};
-		const axis = new Axis(this.elementPoint0, this.elementPoint1, this.elementPoint2,
-			this.elementPoint3, horizontalData, verticalData);
-		const axisElements = axis.render();
-		this.svgElement.appendChild(axisElements);
 	}
 	protected renderSvg() {
 		this.svgElement = createElement('svg', {className: 'schart-svg'});

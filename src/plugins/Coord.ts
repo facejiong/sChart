@@ -18,13 +18,6 @@ export function calculateTicks(min: number, max: number, distance) {
 	if (ceilMax > 0 && ceilMin < 0) {
 		zeroPosition = ceilMax * distance / minMaxCeil;
 	}
-	console.log({
-		ticks,
-		minMaxCeil,
-		ceilMin,
-		ceilMax,
-		zeroPosition
-	});
 	return {
 		ticks,
 		minMaxCeil,

@@ -31,21 +31,35 @@ export class Axis {
 	}
 	public render() {
 		this.renderVertical();
+		this.renderHorizontal();
 		return this.element;
 	}
 	// 纵轴
 	private renderHorizontal() {
-		// const x = this.horizontalXPosition === 'left' ? 0 : this.width;
-		// const line = createLine('schart-axis-horizontal', x, 0, x, this.height, '#333')
-		// this.element.append(line);
-	}
-	private renderHorizontalDottedLine() {
-		// const x = this.horizontalXPosition === 'left' ? 0 : this.width;
-		// const line = createLine('axis-horizontal', x, 0, x, this.height, '#333');
-		// this.element.append(line);
+		const ticks = createElement('g', {className: 'schart-axis-horizontal-ticks'});
+		this.horizontalData.map((cur, index) => {
+			const tick = createElement('g', {className: 'schart-axis-horizontal-tick'});
+			const line = createLine('schart-axis-horizontal-line', this.elementPoint0.x,
+			this.elementPoint0.y + cur.distance, this.elementPoint1.x, this.elementPoint0.y + cur.distance, '#F2F4F5');
+			const text = createElement('text', {
+				className: 'schart-axis-horizontal-text',
+				x: this.elementPoint0.x - 4,
+				y: this.elementPoint0.y + cur.distance,
+				dy: '.32em',
+				innerHTML: cur.text,
+				styles: {
+					'font-size': '12px',
+					'text-anchor': 'end'
+				}
+			});
+			tick.appendChild(line);
+			tick.appendChild(text);
+			ticks.appendChild(tick);
+		})
+		this.element.append(ticks);
 	}
 	// 横轴
-	private renderVertical() {
+	public renderVertical() {
 		const line = createLine('schart-axis-vertical',
 			this.elementPoint3.x, this.elementPoint3.y, this.elementPoint2.x, this.elementPoint2.y, '#333')
 		this.element.append(line);
@@ -57,10 +71,11 @@ export class Axis {
 		const tickLength = this.width / (ticksNum);
 		this.verticalData.map((cur, index) => {
 			const x = tickLength * index + tickLength * 0.5 + this.elementPoint3.x;
-			const tick = createLine('schart-axis-vertical-tick', x, this.elementPoint3.y, x,
+			const tick = createElement('g', {className: 'schart-axis-vertical-tick'});
+			const line = createLine('schart-axis-vertical-line', x, this.elementPoint3.y, x,
 				this.elementPoint3.y + 4, '#333');
 			const text = createElement('text', {
-				className: 'schart-axis-vertical-tick',
+				className: 'schart-axis-vertical-text',
 				x: x,
 				y: this.elementPoint3.y + 10,
 				dy: '.32em',
@@ -70,8 +85,9 @@ export class Axis {
 					'text-anchor': 'middle'
 				}
 			});
+			tick.appendChild(line);
+			tick.appendChild(text);
 			ticks.appendChild(tick);
-			ticks.appendChild(text);
 		})
 		this.element.append(ticks);
 	}
