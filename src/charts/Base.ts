@@ -1,17 +1,30 @@
 import { COLOR_CONTINUOUS_SEMANTIC_GRAY } from '../plugins/ColorSwatches';
 import {Option} from '../Option'
+import {Axis} from '../plugins/Axis';
 import {createText, createRect, createElement, createHtmlElement} from '../plugins/ElementFactory'
 import {Tips} from '../plugins/Tips'
 
+interface Point {
+	x,
+	y
+}
 export default class {
 	protected container: any;
 	protected svgElement: any;
 	protected type: string;
 	protected data: any;
-	protected width: number;
-	protected height: number;
-	protected groupChartWidth: number;
-	protected groupChartHeight: number;
+	protected containerWidth: number;
+	protected containerHeight: number;
+	protected svgWidth: number;
+	protected svgHeight: number;
+	protected svgPoint0: Point;
+	protected svgPoint1: Point;
+	protected svgPoint2: Point;
+	protected svgPoint3: Point;
+	protected elementPoint0: Point;
+	protected elementPoint1: Point;
+	protected elementPoint2: Point;
+	protected elementPoint3: Point;
 	protected title: string;
 	protected subtitle: string;
 	protected colors: Array<string>;
@@ -25,8 +38,8 @@ export default class {
 		this.container = document.querySelector('#' + option.id);
 		this.type = 'base';
 		this.data = option.data;
-		this.width = option.width || 320;
-		this.height = option.height || 240;
+		this.containerWidth = option.width || 320;
+		this.containerHeight = option.height || 240;
 		this.title = option.title || '';
 		this.subtitle = option.subtitle || '';
 		this.padding = option.padding || [10, 10, 10 ,10];
@@ -40,15 +53,57 @@ export default class {
 	protected setWidthHeight () {
 		this.container.style.display = 'inline-block';
 		this.container.style.position = 'relative';
-		this.container.style.height = this.height;
-		this.container.style.width = this.width;
-		this.groupChartWidth = this.width - this.padding[1] - this.padding[3];
-		this.groupChartHeight = this.height - this.padding[0] - this.padding[2] - 20;
+		this.container.style.height = this.containerWidth;
+		this.container.style.width = this.containerHeight;
+		this.svgWidth = this.containerWidth - this.padding[1] - this.padding[3];
+		this.svgHeight = this.containerHeight - this.padding[0] - this.padding[2] - 20;
+		this.svgPoint0 = {
+			x: 0,
+			y: 0
+		};
+		this.svgPoint1 = {
+			x: this.svgWidth,
+			y: 0
+		};
+		this.svgPoint2 = {
+			x: this.svgWidth,
+			y: this.svgHeight
+		};
+		this.svgPoint3 = {
+			x: 0,
+			y: this.svgHeight
+		};
+	}
+	protected renderAxis(horizontalData: Array<any>, verticalData: Array<any>) {
+		let top = 0;
+		let right = 0;
+		let bottom = 30;
+		let left = 30;
+		this.elementPoint0 = {
+			x: left,
+			y: top
+		};
+		this.elementPoint1 = {
+			x: this.svgWidth - right,
+			y: top
+		};
+		this.elementPoint2 = {
+			x: this.svgWidth - right,
+			y: this.svgHeight - bottom
+		};
+		this.elementPoint3 = {
+			x: left,
+			y: this.svgHeight - bottom
+		};
+		const axis = new Axis(this.elementPoint0, this.elementPoint1, this.elementPoint2,
+			this.elementPoint3, horizontalData, verticalData);
+		const axisElements = axis.render();
+		this.svgElement.appendChild(axisElements);
 	}
 	protected renderSvg() {
 		this.svgElement = createElement('svg', {className: 'schart-svg'});
-		this.svgElement.style.height = this.groupChartHeight;
-		this.svgElement.style.width = this.groupChartWidth;
+		this.svgElement.style.height = this.svgHeight;
+		this.svgElement.style.width = this.svgWidth;
 		this.container.appendChild(this.svgElement);
 	}
 	protected renderTitle() {

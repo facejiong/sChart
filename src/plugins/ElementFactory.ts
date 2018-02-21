@@ -90,13 +90,16 @@ export function createLine(className: string, x1: number, y1: number, x2: number
 	});
 }
 
-export function createText(className: string, x: number, y: number, content: string) {
+export function createText(className: string, x: number, y: number, content: string, fontSize: string) {
 	return createElement('text', {
 		className: className,
 		x: x,
 		y: y,
 		dy: '.32em',
-		innerHTML: content
+		innerHTML: content,
+		styles: {
+			'font-size': fontSize
+		}
 	});
 }
 export function createPath(pathStr: string, className: string, stroke='none', fill='none') {

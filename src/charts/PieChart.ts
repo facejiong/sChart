@@ -19,18 +19,18 @@ export class PieChart extends Base {
 		this.opacity = option.opacity || 0.8;
 		this.colors = option.colors || COlOR_CLASSFICATION;
 		this.sortDataType = option.sortDataType || 'descending';
-		this.radius = option.radius || 0;
+		this.radius = option.radius;
 		this.render()
 	}
 	private setPosition() {
-		this.centerX = this.groupChartWidth / 2;
-		this.centerY = this.groupChartHeight / 2;
-		this.radius = 0 || (this.groupChartHeight > this.groupChartWidth ? this.groupChartWidth * 0.45 : this.groupChartHeight * 0.45);
+		this.centerX = this.svgWidth / 2;
+		this.centerY = this.svgHeight / 2;
+		this.radius = this.radius || (this.svgHeight > this.svgWidth ? this.svgWidth * 0.45 : this.svgHeight * 0.45);
 	}
 	public render() {
+		this.sortData();
 		this.renderBase();
 		this.setPosition();
-		this.sortData();
 		this.renderPie();
 		this.renderTips();
 	}
@@ -79,8 +79,6 @@ export class PieChart extends Base {
 		this.slices.map((current, index) => {
 			if (e.target === current) {
 				let hasUpdateData = this.currentSlice === current ? false : true;
-				// console.log(current.style.fill);
-				// current.style.fill = hoverColor(current.style.fill, 15);
 				this.tips.update([{color: current.style.fill, text: this.labels[index]}],
 					e.x, e.y, hasUpdateData);
 				this.currentSlice = current;
