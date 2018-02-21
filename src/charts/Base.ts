@@ -45,7 +45,6 @@ export default class {
 		this.padding = option.padding || [10, 10, 10 ,10];
 	}
 	protected renderBase() {
-		console.log('base render');
 		this.setWidthHeight();
 		this.renderTitle();
 		this.renderSvg();

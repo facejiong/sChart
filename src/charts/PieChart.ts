@@ -60,7 +60,7 @@ export class PieChart extends Base {
 			let slice = createPath(curPath, 'schart-pie-path', 'none', this.colors[i]);
 			this.slices.push(slice);
 			let percent = diffAngle / 3.6;
-			this.labels.push(`${current.label}: ${parseInt(String(percent))}%`);
+			this.labels.push(`${current.label}: ${parseInt(String(percent), 10)}%`);
 			pieElement.appendChild(slice);
 		})
 		this.svgElement.appendChild(pieElement);

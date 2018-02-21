@@ -41,7 +41,7 @@ export class PercentageChart extends Base {
 			percentageElement.appendChild(slice);
 			this.slices.push(slice);
 			let percent = current.value * 100 / totalValue;
-			this.labels.push(`${current.label}: ${parseInt(String(percent))}%`);
+			this.labels.push(`${current.label}: ${parseInt(String(percent), 10)}%`);
 		})
 		this.svgElement.appendChild(percentageElement);
 	}

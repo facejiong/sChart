@@ -63,7 +63,8 @@ export function createRect(className: string, width: number, height: number, x: 
 	});
 }
 
-export function createCircle(className: string, x: number, y: number, r: number, stroke='none', fill='none') {
+export function createCircle(className: string, x: number, y: number, r: number, stroke='none',
+	fill='none') {
 	return createElement('circle', {
 		className: className,
 		cx: x,
@@ -76,7 +77,8 @@ export function createCircle(className: string, x: number, y: number, r: number,
 	});
 }
 
-export function createLine(className: string, x1: number, y1: number, x2: number, y2: number, stroke='none', strokeWidth=1) {
+export function createLine(className: string, x1: number, y1: number, x2: number, y2: number,
+	stroke='none', strokeWidth=1) {
 	return createElement('line', {
 		className: className,
 		x1: x1,
@@ -90,7 +92,7 @@ export function createLine(className: string, x1: number, y1: number, x2: number
 	});
 }
 
-export function createText(className: string, x: number, y: number, content: string, fontSize: string) {
+export function createText(className: string, x: number, y: number, content: string,fontSize: string) {
 	return createElement('text', {
 		className: className,
 		x: x,
