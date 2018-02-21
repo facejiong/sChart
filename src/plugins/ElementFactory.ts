@@ -1,25 +1,28 @@
-interface Attributes {
-	className?: string;
-	width?: number;
-	height?: number;
-	x?: number;
-	y?: number;
-	x1?: number;
-	y1?: number;
-	x2?: number;
-	y2?: number;
-	dy?: string;
-	cx?: number;
-	cy?: number;
-	rx?: number;
-	ry?: number;
-	r?: number;
-	innerHTML?: string;
-	d?: string;
-	styles?: any;
+export function createHtmlElement(tag: string, o: any) {
+	var element = document.createElement(tag);
+
+	for (var i in o) {
+		var val = o[i];
+
+		if (i === "styles") {
+			if(typeof val === "object") {
+				Object.keys(val).map(prop => {
+					element.style[prop] = val[prop];
+				});
+			}
+		} else {
+			if(i === "className") { i = "class"; }
+			if(i === "innerHTML") {
+				element['textContent'] = val;
+			} else {
+				element.setAttribute(i, val);
+			}
+		}
+	}
+	return element;
 }
 
-export function createElement(tag: string, o: Attributes) {
+export function createElement(tag: string, o?: any) {
 	var element = document.createElementNS("http://www.w3.org/2000/svg", tag);
 
 	for (var i in o) {

@@ -1,4 +1,4 @@
-import {createElement, createRect, createText, createLine} from './ElementFactory'
+import {createHtmlElement} from './ElementFactory'
 
 export class Tips {
 	private color: string;
@@ -28,24 +28,32 @@ export class Tips {
 	private renderData() {
 		this.clearNodes();
 		this.data.map((cur) => {
-			let curContainer = document.createElement('div');
-			curContainer.style.height = '24px';
+			let curContainer = createHtmlElement('div', {
+				styles: {
+					height: 24
+				}
+			});
 			// color
-			let curColorContainer = document.createElement('span');
-			curColorContainer.style.display = 'inline-block';
-			curColorContainer.style.width = '10px';
-			curColorContainer.style.height = '10px';
-			curColorContainer.style.background = cur.color;
-			curColorContainer.style.border = '1px solid #fff';
-			curColorContainer.style.borderRadius = '10px';
-			curColorContainer.style.margin = '0 8px 0 0';
+			let curColorContainer = createHtmlElement('span', {
+				styles : {
+					display: 'inline-block',
+					width: '10px',
+					height: '10px',
+					background: cur.color,
+					border: '1px solid #fff',
+					borderRadius: '10px',
+					margin: '0 8px 0 0'
+				}
+			});
 			// text
-			let curTextContainer = document.createElement('span');
-			curTextContainer.style.display = 'inline-block';
-			curTextContainer.style.color = '#fff';
-			curTextContainer.style.fontSize = '14px';
-			curTextContainer.innerHTML = cur.text;
-			// curColorContainer.style.margin = '0 8px 0 0';
+			let curTextContainer = createHtmlElement('span', {
+				innerHTML: cur.text,
+				styles: {
+					display: 'inline-block',
+					color: '#fff',
+					fontSize: '14px',
+				}
+			});
 			curContainer.appendChild(curColorContainer);
 			curContainer.appendChild(curTextContainer);
 			this.container.appendChild(curContainer)
@@ -54,7 +62,6 @@ export class Tips {
 	private calculatePosition(x: number, y: number,) {
 		let clientWidth = document.body.clientWidth;
 		let clientHeight = document.body.clientHeight;
-		console.log(this.container.style);
 	}
 	public update(data: Array<any>, x: number, y: number, hasUpdateData = true) {
 		this.data = data;
