@@ -17,10 +17,16 @@ export class Tips {
 		container.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
 		container.style.borderRadius = '4px';
 		container.style.position = 'fixed';
-		this.renderData(container)
+		this.renderData()
 		document.body.appendChild(container);
 	}
-	private renderData(container) {
+	private clearNodes() {
+		while(this.container.hasChildNodes()) {
+      this.container.removeChild(this.container.firstChild);
+    }
+	}
+	private renderData() {
+		this.clearNodes();
 		this.data.map((cur) => {
 			let curContainer = document.createElement('div');
 			curContainer.style.height = '24px';
@@ -42,12 +48,22 @@ export class Tips {
 			// curColorContainer.style.margin = '0 8px 0 0';
 			curContainer.appendChild(curColorContainer);
 			curContainer.appendChild(curTextContainer);
-			container.appendChild(curContainer)
+			this.container.appendChild(curContainer)
 		})
 	}
-	public update(data: Array<any>, top: number, left: number) {
+	private calculatePosition(x: number, y: number,) {
+		let clientWidth = document.body.clientWidth;
+		let clientHeight = document.body.clientHeight;
+		console.log(this.container.style);
+	}
+	public update(data: Array<any>, x: number, y: number, hasUpdateData = true) {
 		this.data = data;
 		this.container.style.display = 'inline-block';
+		this.container.style.top = (y + 10) + 'px';
+		this.container.style.left = (x + 10) + 'px';
+		if (hasUpdateData) {
+			this.renderData();
+		}
 	}
 	public hide() {
 		this.container.style.display = 'none';
