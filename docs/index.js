@@ -1,7 +1,7 @@
 import { Chart } from '../src/Chart'
 
 // pie
-const data0 = [
+var data0 = [
 	{
 		label: '实例1',
 		value: 234
@@ -19,7 +19,7 @@ const data0 = [
 		value: 400
 	}
 ]
-const pieChart = new Chart({
+var pieChart = new Chart({
 	id: 'pie-chart',
 	title: 'Pie Chart',
 	// subtitle: 'My Sub Chart',
@@ -31,7 +31,7 @@ const pieChart = new Chart({
 })
 console.log(pieChart)
 
-const percentageChart = new Chart({
+var percentageChart = new Chart({
 	id: 'percentage-chart',
 	title: 'Percentage Chart',
 	data: data0,
@@ -41,7 +41,7 @@ const percentageChart = new Chart({
 })
 console.log(percentageChart)
 // bar
-let data1 = {
+var data1 = {
 	labels: ['2018-01-01', '2018-01-02', '2018-01-03', '2018-01-04',
 		'2018-01-05', '2018-01-06', '2018-01-07', '2018-01-08'],
 
@@ -56,7 +56,7 @@ let data1 = {
 		},
 	]
 };
-const barChart = new Chart({
+var barChart = new Chart({
 	id: 'bar-chart',
 	title: 'Bar Chart',
 	data: data1,
@@ -65,7 +65,7 @@ const barChart = new Chart({
 	width: 640,
 })
 console.log(barChart)
-const lineChart = new Chart({
+var lineChart = new Chart({
 	id: 'line-chart',
 	title: 'Line Chart',
 	data: data1,
@@ -74,7 +74,7 @@ const lineChart = new Chart({
 	width: 640,
 })
 console.log(lineChart)
-const scatterData = [
+var scatterData = [
 	{label: '实例1',x: 23, y: 34, r: 8, color: 'rgba(167, 232, 180, 0.5)'},
 	{label: '实例2',x: 213, y: 324, r: 12, color: 'rgba(167, 232, 180, 0.5)'},
 	{label: '实例3',x: 23, y: 314, r: 8, color: 'rgba(167, 232, 180, 0.5)'},
@@ -88,7 +88,7 @@ const scatterData = [
 	{label: '实例11',x: 13, y: 84, r: 8, color: 'rgba(167, 232, 180, 0.5)'},
 	{label: '实例12',x: 23, y: 341, r: 7, color: 'rgba(167, 232, 180, 0.5)'},
 ]
-const scatterChart = new Chart({
+var scatterChart = new Chart({
 	id: 'scatter-chart',
 	title: 'Scatter Chart',
 	data: scatterData,

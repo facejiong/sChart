@@ -1,24 +1,23 @@
-import {BarChart} from './charts/BarChart';
-import {LineChart} from './charts/LineChart';
-import {ScatterChart} from './charts/ScatterChart';
-import {PercentageChart} from './charts/PercentageChart';
-import {PieChart} from './charts/PieChart';
-import {Heatmap} from './charts/Heatmap';
+import {BarChart} from "./charts/BarChart";
+import {Heatmap} from "./charts/Heatmap";
+import {LineChart} from "./charts/LineChart";
+import {PercentageChart} from "./charts/PercentageChart";
+import {PieChart} from "./charts/PieChart";
+import {ScatterChart} from "./charts/ScatterChart";
 
-import {Option} from './Option';
+import {InterfaceOption} from "./Option";
 
 const typeCharts = {
-	line: LineChart,
-	bar: BarChart,
-	scatter: ScatterChart,
-	percentage: PercentageChart,
-	heatmap: Heatmap,
-	pie: PieChart
-}
+  bar: BarChart,
+  heatmap: Heatmap,
+  line: LineChart,
+  percentage: PercentageChart,
+  pie: PieChart,
+  scatter: ScatterChart,
+};
 
 export class Chart {
-	constructor(option: Option) {
-		return new typeCharts[option.type](option)
-	}
+  constructor(option: InterfaceOption) {
+    return new typeCharts[option.type](option);
+  }
 }
-
