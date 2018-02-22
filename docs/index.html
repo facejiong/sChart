@@ -30,7 +30,7 @@
 	<div id="pie-chart" class="chart-one"></div>
 	<pre>
 		<code>
-const data = [{
+var data = [{
 	label: '实例1',
 	value: 234
 }, {
@@ -43,7 +43,7 @@ const data = [{
 	label: '实例4',
 	value: 400
 }]
-const pieChart = new Chart({
+var pieChart = new Chart({
 	id: 'pie-chart',
 	title: 'Pie Chart',
 	data: data,
@@ -57,7 +57,7 @@ const pieChart = new Chart({
 	<div id="percentage-chart" class="chart-one"></div>
 	<pre>
 		<code>
-const data = [{
+var data = [{
 	label: '实例1',
 	value: 234
 }, {
@@ -70,7 +70,7 @@ const data = [{
 	label: '实例4',
 	value: 400
 }]
-const percentageChart = new Chart({
+var percentageChart = new Chart({
 	id: 'percentage-chart',
 	title: 'Percentage Chart',
 	data: data,
@@ -83,7 +83,7 @@ const percentageChart = new Chart({
 	<div id="bar-chart" class="chart-one"></div>
 	<pre>
 		<code>
-let data = {
+var data = {
 	labels: ['2018-01-01', '2018-01-02', '2018-01-03', '2018-01-04',
 		'2018-01-05', '2018-01-06', '2018-01-07', '2018-01-08'],
 
@@ -98,7 +98,7 @@ let data = {
 		},
 	]
 };
-const barChart = new Chart({
+var barChart = new Chart({
 	id: 'bar-chart',
 	title: 'Bar Chart',
 	data: data,
@@ -111,7 +111,7 @@ const barChart = new Chart({
 	<div id="line-chart" class="chart-one"></div>
 	<pre>
 		<code>
-let data = {
+var data = {
 	labels: ['2018-01-01', '2018-01-02', '2018-01-03', '2018-01-04',
 		'2018-01-05', '2018-01-06', '2018-01-07', '2018-01-08'],
 
@@ -126,7 +126,7 @@ let data = {
 		},
 	]
 };
-const lineChart = new Chart({
+var lineChart = new Chart({
 	id: 'line-chart',
 	title: 'Line Chart',
 	data: data,
@@ -139,7 +139,7 @@ const lineChart = new Chart({
 	<div id="scatter-chart" class="chart-one"></div>
 		<pre>
 		<code>
-const scatterData = [
+var scatterData = [
 	{label: '实例1',x: 23, y: 34, r: 8, color: 'rgba(167, 232, 180, 0.5)'},
 	{label: '实例2',x: 213, y: 324, r: 12, color: 'rgba(167, 232, 180, 0.5)'},
 	{label: '实例3',x: 23, y: 314, r: 8, color: 'rgba(167, 232, 180, 0.5)'},
@@ -153,7 +153,7 @@ const scatterData = [
 	{label: '实例11',x: 13, y: 84, r: 8, color: 'rgba(167, 232, 180, 0.5)'},
 	{label: '实例12',x: 23, y: 341, r: 7, color: 'rgba(167, 232, 180, 0.5)'},
 ]
-const scatterChart = new Chart({
+var scatterChart = new Chart({
 	id: 'scatter-chart',
 	title: 'Scatter Chart',
 	data: scatterData,

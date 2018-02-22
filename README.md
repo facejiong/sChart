@@ -1,7 +1,10 @@
 <div align="center">
 	<h2>sCharts</h2>
   <p align="center">
-    <p>simple svg charts with zero dependencies</p>
+    <p>simple svg charts with zero dependencies
+    <a href="https://github.com/facejiong/sCharts/blob/master/docs/all.png">
+      more
+    </a></p>
   </p>
 </div>
 
