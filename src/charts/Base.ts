@@ -98,9 +98,14 @@ export default class {
 		};
 	}
 	protected renderSvg() {
-		this.svgElement = createElement('svg', {className: 'schart-svg'});
-		this.svgElement.style.height = this.svgHeight;
-		this.svgElement.style.width = this.svgWidth;
+		this.svgElement = createElement('svg',
+			{
+				className: 'schart-svg',
+				version: '1.1',
+				xmlns: 'http://www.w3.org/2000/svg',
+				width: this.svgWidth,
+				height: this.svgHeight
+			});
 		this.container.appendChild(this.svgElement);
 	}
 	protected renderTitle() {

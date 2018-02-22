@@ -56,13 +56,13 @@ export class Axis {
 			tick.appendChild(text);
 			ticks.appendChild(tick);
 		})
-		this.element.append(ticks);
+		this.element.appendChild(ticks);
 	}
 	// 横轴
 	public renderVertical() {
 		const line = createLine('schart-axis-vertical',
 			this.elementPoint3.x, this.elementPoint3.y, this.elementPoint2.x, this.elementPoint2.y, '#333')
-		this.element.append(line);
+		this.element.appendChild(line);
 		this.renderVerticalTicks();
 	}
 	private renderVerticalTicks() {
@@ -89,7 +89,7 @@ export class Axis {
 			tick.appendChild(text);
 			ticks.appendChild(tick);
 		})
-		this.element.append(ticks);
+		this.element.appendChild(ticks);
 	}
 	private renderGrid() {
 
