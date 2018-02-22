@@ -63,17 +63,23 @@ export class ScatterChart extends Base {
 		this.data.map((cur) => {
 			let positionX = this.elementPoint0.x + (cur.x - ceilMinX) * width / minMaxCeilX;
 			let positionY = this.elementPoint0.y + (ceilMaxY - cur.y) * height / minMaxCeilY;
+			let color = cur.color || 'rgb(24, 144, 255)';
 			let slice = createCircle('schart-scatter-circle', positionX,  positionY,
-					cur.r || 4, 'none', cur.color || 'rgb(24, 144, 255)');
+					cur.r || 4, 'none', color);
 			scatterElement.appendChild(slice);
+			this.slices.push(slice);
+			this.labels.push({
+				color,
+				text: `x: ${cur.x}, y: ${cur.y}`
+			})
 		})
 		this.svgElement.appendChild(scatterElement);
 	}
 	protected	mouseMove = (e) => {
 		this.slices.map((current, index) => {
-			if (e.target.parentElement === current) {
+			if (e.target === current) {
 				let hasUpdateData = this.currentSlice === current ? false : true;
-				this.tips.update(this.labels[index].data,
+				this.tips.update([this.labels[index]],
 					e.x, e.y, hasUpdateData);
 				this.currentSlice = current;
 			}
