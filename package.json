@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/facejiong/sCharts#readme",
   "devDependencies": {
+    "ts-loader": "^3.5.0",
     "tslint": "^5.9.1",
     "typescript": "^2.7.2",
     "webpack": "^3.11.0"
