@@ -59,17 +59,23 @@ export class BarChart extends Base {
 			groupOffset = barOffset * (index) + barOffset / 4;
 			datasets.map((curDataset, indexDataset) => {
 				let curValue = curDataset.values[index]
-				let barHeight = Math.abs(height * curValue / minMaxCeil);
-				let positionY;
+				let positionY, barHeight;
 				let positionX = groupOffset + barWidth * (indexDataset) + this.elementPoint3.x;
 				if (zeroPosition) {
-					positionY = barHeight > 0 ? zeroPosition - barHeight : zeroPosition;
-				} else {
-					if (ceilMin >= 0) {
-						positionY = this.elementPoint0.y + height - barHeight;
+					if (curValue >= 0) {
+						barHeight = Math.abs((zeroPosition) * curValue / ceilMax);
+						positionY =  this.elementPoint0.y + zeroPosition - barHeight;
+					} else {
+						barHeight = Math.abs((height - zeroPosition) * curValue / ceilMin);
+						positionY =  this.elementPoint0.y + zeroPosition;
 					}
-					if (ceilMax <= 0) {
-						positionY = this.elementPoint0.y;
+				} else {
+					if (curValue >= 0) {
+						barHeight = Math.abs(height * curValue / minMaxCeil);
+						positionY =  this.elementPoint0.y + height - barHeight;
+					} else {
+						barHeight = Math.abs(height * curValue / minMaxCeil);
+						positionY =  this.elementPoint0.y;
 					}
 				}
 				let slice = createRect('schart-bar-group-rect', barWidth, barHeight,
