@@ -9,22 +9,24 @@ export function calculateTicks(min: number, max: number, distance) {
 	const minMaxCeilTickValue = minMaxCeil / ticksNumber
 	const ticks = [];
 	for (let i = 0; i <= ticksNumber; i++) {
-		ticks.push({
+		ticks.unshift({
 			text: ceilMin + minMaxCeilTickValue * i,
-			distance: ticksDistance * i
+			distance: distance - ticksDistance * i
 		})
 	}
 	let zeroPosition;
 	if (ceilMax > 0 && ceilMin < 0) {
 		zeroPosition = ceilMax * distance / minMaxCeil;
 	}
-	return {
+	const config = {
 		ticks,
 		minMaxCeil,
 		ceilMin,
 		ceilMax,
 		zeroPosition
-	};
+	}
+	console.log(config)
+	return config;
 }
 
 function ceilNum(num, pow) {

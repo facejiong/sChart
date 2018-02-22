@@ -63,15 +63,16 @@ export class BarChart extends Base {
 				let positionY;
 				let positionX = groupOffset + barWidth * (indexDataset) + this.elementPoint3.x;
 				if (zeroPosition) {
-					positionY = this.elementPoint0.y + barHeight > 0 ? zeroPosition - barHeight : zeroPosition;
+					positionY = barHeight > 0 ? zeroPosition - barHeight : zeroPosition;
+				} else {
+					if (ceilMin >= 0) {
+						positionY = this.elementPoint0.y + height - barHeight;
+					}
+					if (ceilMax <= 0) {
+						positionY = this.elementPoint0.y;
+					}
 				}
-				if (ceilMin >= 0) {
-					positionY = this.elementPoint0.y + height - barHeight;
-				}
-				if (ceilMax <= 0) {
-					positionY = this.elementPoint0.y;
-				}
-				let slice = createRect('schart-bar-rect', barWidth, barHeight,
+				let slice = createRect('schart-bar-group-rect', barWidth, barHeight,
 					positionX, positionY, 0, 0, 'none', this.colors[indexDataset]);
 				barGroupElement.appendChild(slice);
 				label.data.push({
