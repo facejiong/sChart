@@ -25,7 +25,6 @@ export function calculateTicks(min: number, max: number, distance) {
 		ceilMax,
 		zeroPosition
 	}
-	console.log(config)
 	return config;
 }
 

@@ -35,7 +35,7 @@ export class PercentageChart extends Base {
 		let percentageElement = createElement('g', {className: 'schart-percentage'});
 		this.data.map((current, i) => {
 			let curWidth = current.value * svgWidth / totalValue
-			let slice = createRect('percentage-rect', curWidth, percentageHeight, startWidth,
+			let slice = createRect('schart-percentage-rect', curWidth, percentageHeight, startWidth,
 			percentageTop, 0, 0, 'none', this.colors[i]);
 			startWidth += curWidth
 			percentageElement.appendChild(slice);

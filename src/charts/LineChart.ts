@@ -54,7 +54,8 @@ export class LineChart extends Base {
 				let positionY1 = this.elementPoint0.y + (ceilMax - arr[indexValue + 1]) * height / minMaxCeil;
 				let positionX0 = this.elementPoint0.x + lineInterval * (indexValue + 0.5);
 				let positionX1 = this.elementPoint0.x + lineInterval * (indexValue + 1.5);
-				let slicePoint = createCircle('schart-line-group-point', positionX0, positionY0, 4, '#fff', this.colors[indexDataset])
+				let slicePoint = createCircle('schart-line-group-point', positionX0, positionY0, 5,
+					'#fff', this.colors[indexDataset])
 				if (indexValue < arr.length - 1) {
 					let sliceLine = createLine('schart-line-group-line', positionX0, positionY0, positionX1, positionY1,
 						this.colors[indexDataset], 2);
@@ -62,6 +63,10 @@ export class LineChart extends Base {
 				}
 				lineGroupElement.appendChild(slicePoint);
 				this.slices.push(slicePoint);
+				this.labels.push({
+					text: `${curDataset.title}: ${curValue}`,
+					color: this.colors[indexDataset]
+				});
 			})
 			lineElement.appendChild(lineGroupElement);
 		})
@@ -69,9 +74,9 @@ export class LineChart extends Base {
 	}
 	protected	mouseMove = (e) => {
 		this.slices.map((current, index) => {
-			if (e.target.parentElement === current) {
+			if (e.target === current) {
 				let hasUpdateData = this.currentSlice === current ? false : true;
-				this.tips.update(this.labels[index].data,
+				this.tips.update([this.labels[index]],
 					e.x, e.y, hasUpdateData);
 				this.currentSlice = current;
 			}

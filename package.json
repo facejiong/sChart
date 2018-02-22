@@ -1,11 +1,11 @@
 {
   "name": "scharts",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "svg charts",
+  "main": "./dist/Chart.js",
   "scripts": {
     "test": "parcel ./docs/index.html -p 1235",
-    "build": "parcel build index.js --out-dir dist/"
+    "build": "parcel build ./src/Chart.ts --out-dir dist/"
   },
   "repository": {
     "type": "git",
