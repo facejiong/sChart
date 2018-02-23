@@ -1,8 +1,8 @@
 /* tslint:disable-next-line:max-line-length */
+// Obejct.keys(obj)
 export function createHtmlElement(tag: string, o: any) {
   const element = document.createElement(tag);
-
-  for (let i in o) {
+  Object.keys(o).map((i) => {
     const val = o[i];
 
     if (i === "styles") {
@@ -19,14 +19,14 @@ export function createHtmlElement(tag: string, o: any) {
         element.setAttribute(i, val);
       }
     }
-  }
+  });
   return element;
 }
 
 export function createElement(tag: string, o?: any) {
   const element = document.createElementNS("http://www.w3.org/2000/svg", tag);
 
-  for (let i in o) {
+  Object.keys(o).map((i) => {
     const val = o[i];
 
     if (i === "styles") {
@@ -43,7 +43,8 @@ export function createElement(tag: string, o?: any) {
         element.setAttribute(i, val);
       }
     }
-  }
+  });
+
   return element;
 }
 
