@@ -1,18 +1,17 @@
-<div align="center">
-	<h2>sCharts</h2>
-  <p align="center">
-    <p>simple svg charts with zero dependencies
-    <a href="https://github.com/facejiong/sCharts/blob/master/docs/all.png">
-      more
-    </a></p>
-  </p>
-</div>
-
 <p align="center">
-  <a href="">
-    <img src="./docs/line.png">
-  </a>
+  <img src="./docs/line.png">
 </p>
+
+
+# sCharts
+#### simple svg charts with zero dependencies
+<a href="https://github.com/facejiong/sCharts/blob/master/docs/all.png">
+  more
+</a>
+
+
+[![Build Status](https://travis-ci.org/[facejiong]/[sCharts].png)](https://travis-ci.org/[facejiong]/[sCharts])
+
 
 ### Contents
 * [Installation](#installation)
