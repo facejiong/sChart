@@ -10,6 +10,8 @@
 </a>
 
 [![](https://img.shields.io/travis/facejiong/sCharts.svg?style=flat-square)](https://travis-ci.org/facejiong/sCharts)
+[![](https://david-dm.org/facejiong/sCharts/status.svg)](https://david-dm.org/facejiong/sCharts)
+[![](https://img.shields.io/npm/v/sCharts.svg?style=flat-square)](https://www.npmjs.com/package/sCharts)
 
 
 ### Contents

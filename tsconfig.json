@@ -1,6 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs"
-  }
+  },
+  "include": [
+    "test/",
+    "src/"
+  ],
+  "exclude": [
+    "node_modules/"
+  ]
 }
