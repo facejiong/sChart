@@ -9,8 +9,7 @@
   more
 </a>
 
-
-[![Build Status](https://travis-ci.org/[facejiong]/[sCharts].png)](https://travis-ci.org/[facejiong]/[sCharts])
+[![](https://img.shields.io/travis/facejiong/sCharts.svg?style=flat-square)](https://travis-ci.org/facejiong/sCharts)
 
 
 ### Contents
