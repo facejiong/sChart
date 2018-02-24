@@ -32,10 +32,7 @@
   },
   "ava": {
     "files": [
-      "./test/*.js"
-    ],
-    "sources": [
-      "./test/*.ts"
+      "./dist/test/"
     ]
   }
 }
