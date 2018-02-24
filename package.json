@@ -4,9 +4,10 @@
   "description": "svg charts",
   "main": "./dist/Chart.js",
   "scripts": {
-    "test": "parcel ./docs/index.html -p 1235",
+    "example": "parcel ./docs/index.html -p 1235",
     "build": "webpack --progress",
-    "tslint": "tslint ./src/*/*"
+    "tslint": "tslint ./src/*/*",
+    "test": "tsc && ava"
   },
   "repository": {
     "type": "git",
@@ -19,9 +20,22 @@
   },
   "homepage": "https://github.com/facejiong/sCharts#readme",
   "devDependencies": {
+    "ava": "^1.0.0-beta.3",
+    "codecov": "^3.0.0",
     "ts-loader": "^3.5.0",
+    "tsc": "^1.20150623.0",
     "tslint": "^5.9.1",
     "typescript": "^2.7.2",
     "webpack": "^3.11.0"
+  },
+  "ava": {
+    "files": [
+      "./test/*/*.ts"
+    ],
+    "source": [
+      "./test/*/*.ts"
+    ],
+    "failFast": true,
+    "tap": true
   }
 }

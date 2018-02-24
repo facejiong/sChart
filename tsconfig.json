@@ -1,20 +1,6 @@
 {
   "compilerOptions": {
-    // "strictNullChecks": true,
-    "moduleResolution": "node",
-    "experimentalDecorators": true,
-    // "noUnusedParameters": true,
-    // "noUnusedLocals": true,
-    // "noImplicitAny": true,
     "target": "es5",
-    "lib": [
-      "dom",
-      "es7"
-    ]
-  },
-  "exclude": [
-    "node_modules",
-    "lib",
-    "es"
-  ]
+    "module": "commonjs"
+  }
 }

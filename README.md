@@ -73,7 +73,7 @@ View Examples:
 1. Clone this repo.
 2. `cd` into project directory.
 3. `npm install -g parcel`
-4. `npm run test`
+4. `npm run example`
 
 If you want to contribute:
 
