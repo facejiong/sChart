@@ -1,5 +1,4 @@
-/* tslint:disable-next-line:max-line-length */
-// Obejct.keys(obj)
+
 export function createHtmlElement(tag: string, o: any) {
   const element = document.createElement(tag);
   Object.keys(o).map((i) => {
@@ -47,7 +46,7 @@ export function createElement(tag: string, o?: any) {
 
   return element;
 }
-
+// tslint:disable-next-line:max-line-length
 export function createRect(className: string, width: number, height: number, x: number, y: number, rx: number, ry: number, stroke = "none", fill = "none") {
   return createElement("rect", {
     className,
@@ -76,7 +75,7 @@ export function createCircle(className: string, x: number, y: number, r: number,
     },
   });
 }
-
+// tslint:disable-next-line:max-line-length
 export function createLine(className: string, x1: number, y1: number, x2: number, y2: number, stroke = "none", strokeWidth = 1) {
   return createElement("line", {
     className,
