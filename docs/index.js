@@ -1,4 +1,4 @@
-import { Chart } from '../src/Chart'
+import Chart from '../src/Chart'
 
 // pie
 var data0 = [

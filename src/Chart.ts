@@ -16,7 +16,7 @@ const typeCharts = {
   scatter: ScatterChart,
 };
 
-export class Chart {
+export default class Chart {
   constructor(option: InterfaceOption) {
     return new typeCharts[option.type](option);
   }

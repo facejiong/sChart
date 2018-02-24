@@ -20,8 +20,7 @@
   },
   "homepage": "https://github.com/facejiong/sCharts#readme",
   "devDependencies": {
-    "ava": "^1.0.0-beta.3",
-    "codecov": "^3.0.0",
+    "ava": "^0.25.0",
     "coveralls": "^3.0.0",
     "has-ansi": "^3.0.0",
     "nyc": "^11.4.1",
