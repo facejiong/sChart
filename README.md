@@ -4,10 +4,7 @@
 
 
 # sCharts
-#### simple svg charts with zero dependencies
-<a href="https://github.com/facejiong/sCharts/blob/master/docs/all.png">
-  more
-</a>
+#### simple svg charts with zero dependencies [more example](https://github.com/facejiong/sCharts/blob/master/docs/all.png)
 
 [![](https://img.shields.io/travis/facejiong/sCharts.svg?style=flat-square)](https://travis-ci.org/facejiong/sCharts)
 [![](https://img.shields.io/coveralls/github/facejiong/sCharts.svg?style=flat-square)](https://coveralls.io/github/facejiong/sCharts)
