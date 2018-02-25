@@ -15,16 +15,6 @@ export class BarChart extends Base {
     this.colors = option.colors || colorClassfication;
     this.render();
   }
-  protected mouseMove = (e) => {
-    this.slices.map((current, index) => {
-      if (e.target.parentElement === current) {
-        const hasUpdateData = this.currentSlice === current ? false : true;
-        this.tips.update(this.labels[index].data,
-          e.x, e.y, hasUpdateData);
-        this.currentSlice = current;
-      }
-    });
-  }
   private render() {
     this.renderBase();
     this.computeMinMax();
@@ -91,16 +81,16 @@ export class BarChart extends Base {
         }
         const slice = createRect("schart-bar-group-rect", barWidth, barHeight,
           positionX, positionY, 0, 0, "none", this.colors[indexDataset]);
-        barGroupElement.appendChild(slice);
-        label.data.push({
+        this.slices.push({
           color: this.colors[indexDataset],
-          text: `${curDataset.title}: ${curValue}`,
+          slice,
+          title: curDataset.title,
+          value: curValue,
         });
+        barGroupElement.appendChild(slice);
       });
-      this.slices.push(barGroupElement);
       barElement.appendChild(barGroupElement);
       this.svgElement.appendChild(barElement);
-      this.labels.push(label);
     });
   }
 }

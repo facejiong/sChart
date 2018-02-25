@@ -22,16 +22,6 @@ export class PieChart extends Base {
     this.radius = option.radius;
     this.render();
   }
-  protected mouseMove = (e) => {
-    this.slices.map((current, index) => {
-      if (e.target === current) {
-        const hasUpdateData = this.currentSlice === current ? false : true;
-        this.tips.update([{ color: current.style.fill, text: this.labels[index] }],
-          e.x, e.y, hasUpdateData);
-        this.currentSlice = current;
-      }
-    });
-  }
   private render() {
     this.sortData();
     this.renderBase();
@@ -74,10 +64,14 @@ export class PieChart extends Base {
       const endPosition = this.getPositionByAngle(endAngle, radius);
       const curPath = this.makeArcPath(startPosition, endPosition, diffAngle);
       const slice = createPath(curPath, "schart-pie-path", "none", this.colors[i]);
-      this.slices.push(slice);
-      const percent = diffAngle / 3.6;
-      this.labels.push(`${current.label}: ${parseInt(String(percent), 10)}%`);
       pieElement.appendChild(slice);
+      const percent = diffAngle / 3.6;
+      this.slices.unshift({
+        color: this.colors[i],
+        slice,
+        title: current.label,
+        value: parseInt(String(percent), 10) + "%",
+      });
     });
     this.svgElement.appendChild(pieElement);
   }

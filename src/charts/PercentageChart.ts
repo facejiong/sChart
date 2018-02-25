@@ -13,16 +13,6 @@ export class PercentageChart extends Base {
     this.colors = option.colors || colorClassfication;
     this.render();
   }
-  protected mouseMove = (e) => {
-    this.slices.map((current, index) => {
-      if (e.target === current) {
-        const hasUpdateData = this.currentSlice === current ? false : true;
-        this.tips.update([{ color: current.style.fill, text: this.labels[index] }],
-          e.x, e.y, hasUpdateData);
-        this.currentSlice = current;
-      }
-    });
-  }
   private render() {
     this.filterData();
     this.renderBase();
@@ -49,9 +39,13 @@ export class PercentageChart extends Base {
         percentageTop, 0, 0, "none", this.colors[i]);
       startWidth += curWidth;
       percentageElement.appendChild(slice);
-      this.slices.push(slice);
       const percent = current.value * 100 / totalValue;
-      this.labels.push(`${current.label}: ${parseInt(String(percent), 10)}%`);
+      this.slices.push({
+        color: this.colors[i],
+        slice,
+        title: current.label,
+        value: parseInt(String(percent), 10),
+      });
     });
     this.svgElement.appendChild(percentageElement);
   }

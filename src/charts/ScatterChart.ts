@@ -1,5 +1,6 @@
 import { InterfaceOption } from "../Option";
 import { Axis } from "../plugins/Axis";
+import { Color } from "../plugins/Color";
 import { calculateTicks } from "../plugins/Coord";
 import { createCircle, createElement } from "../plugins/ElementFactory";
 import { Base } from "./Base";
@@ -19,9 +20,11 @@ export class ScatterChart extends Base {
   }
   protected mouseMove = (e) => {
     this.slices.map((current, index) => {
-      if (e.target === current) {
+      if (e.target === current.slice) {
+        const color = new Color(current.color);
+        current.slice.style.fill = color.lighten(0.2).getHex();
         const hasUpdateData = this.currentSlice === current ? false : true;
-        this.tips.update([this.labels[index]],
+        this.tips.update([{ color: current.color, text: current.title }],
           e.x, e.y, hasUpdateData);
         this.currentSlice = current;
       }
@@ -78,10 +81,10 @@ export class ScatterChart extends Base {
       const slice = createCircle("schart-scatter-circle", positionX, positionY,
         cur.r || 4, "none", color);
       scatterElement.appendChild(slice);
-      this.slices.push(slice);
-      this.labels.push({
+      this.slices.push({
         color,
-        text: `x: ${cur.x}, y: ${cur.y}`,
+        slice,
+        title: `x: ${cur.x}, y: ${cur.y}`,
       });
     });
     this.svgElement.appendChild(scatterElement);

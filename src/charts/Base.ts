@@ -1,5 +1,6 @@
 import { InterfaceOption } from "../Option";
 import { Axis } from "../plugins/Axis";
+import { Color } from "../plugins/Color";
 import { createElement, createHtmlElement, createRect, createText } from "../plugins/ElementFactory";
 import { Tips } from "../plugins/Tips";
 
@@ -31,7 +32,6 @@ export class Base {
   protected colors: string[];
   protected padding: number[];
   protected slices: any[] = [];
-  protected labels: any[] = [];
   protected tips: any;
   protected currentSlice: any;
 
@@ -121,14 +121,24 @@ export class Base {
   protected renderTips() {
     this.tips = new Tips();
     this.slices.map((current) => {
-      current.addEventListener("mousemove", this.mouseMove);
-      current.addEventListener("mouseleave", this.mouseLeave);
+      current.slice.addEventListener("mousemove", this.mouseMove);
+      current.slice.addEventListener("mouseleave", this.mouseLeave);
     });
   }
   protected mouseMove = (e) => {
-    //
+    this.slices.map((current, index) => {
+      if (e.target === current.slice) {
+        const color = new Color(current.color);
+        current.slice.style.fill = color.lighten(0.2).getHex();
+        const hasUpdateData = this.currentSlice === current ? false : true;
+        this.tips.update([{ color: current.color, text: `${current.title}: ${current.value}` }],
+          e.x, e.y, hasUpdateData);
+        this.currentSlice = current;
+      }
+    });
   }
   protected mouseLeave = () => {
     this.tips.hide();
+    this.currentSlice.slice.style.fill = this.currentSlice.color;
   }
 }

@@ -15,16 +15,6 @@ export class LineChart extends Base {
     this.colors = option.colors || colorClassfication;
     this.render();
   }
-  protected mouseMove = (e) => {
-    this.slices.map((current, index) => {
-      if (e.target === current) {
-        const hasUpdateData = this.currentSlice === current ? false : true;
-        this.tips.update([this.labels[index]],
-          e.x, e.y, hasUpdateData);
-        this.currentSlice = current;
-      }
-    });
-  }
   private render() {
     this.renderBase();
     this.computeMinMax();
@@ -66,17 +56,18 @@ export class LineChart extends Base {
         const positionX1 = this.elementPoint0.x + lineInterval * (indexValue + 1.5);
         const slicePoint = createCircle("schart-line-group-point", positionX0, positionY0, 5,
           "#fff", this.colors[indexDataset]);
+        this.slices.unshift({
+          color: this.colors[indexDataset],
+          slice: slicePoint,
+          title: curDataset.title,
+          value: curValue,
+        });
         if (indexValue < arr.length - 1) {
           const sliceLine = createLine("schart-line-group-line", positionX0, positionY0, positionX1, positionY1,
             this.colors[indexDataset], 2);
           lineGroupElement.appendChild(sliceLine);
         }
         lineGroupElement.appendChild(slicePoint);
-        this.slices.push(slicePoint);
-        this.labels.push({
-          color: this.colors[indexDataset],
-          text: `${curDataset.title}: ${curValue}`,
-        });
       });
       lineElement.appendChild(lineGroupElement);
     });
