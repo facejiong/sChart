@@ -11,15 +11,31 @@ export class BarChart extends Base {
   private ticksConfig: any;
   constructor(option: InterfaceOption) {
     super(option);
-    this.type = option.type;
     this.colors = option.colors || colorClassfication;
     this.render();
+  }
+  protected updateLegend() {
+    const hash = {};
+    const data = [];
+    this.slices.map((cur) => {
+      if (!hash[cur.title]) {
+        hash[cur.title] = cur.color;
+      }
+    });
+    Object.keys(hash).map((key) => {
+      data.push({
+        color: hash[key],
+        title: key,
+      });
+    });
+    this.legend.updateData(data);
   }
   private render() {
     this.renderBase();
     this.computeMinMax();
     this.renderAxis();
     this.renderBar();
+    this.updateLegend();
     this.renderTips();
   }
   private renderAxis() {

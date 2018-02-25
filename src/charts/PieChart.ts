@@ -15,18 +15,21 @@ export class PieChart extends Base {
 
   constructor(option: InterfaceOption) {
     super(option);
-    this.type = option.type;
     this.opacity = option.opacity || 0.8;
     this.colors = option.colors || colorClassfication;
     this.sortDataType = option.sortDataType || "descending";
     this.radius = option.radius;
     this.render();
   }
+  protected updateLegend() {
+    this.legend.updateData(this.slices);
+  }
   private render() {
     this.sortData();
     this.renderBase();
     this.setPosition();
     this.renderPie();
+    this.updateLegend();
     this.renderTips();
   }
   private getPositionByAngle(angle, radius) {

@@ -15,7 +15,6 @@ export class ScatterChart extends Base {
   private ticksConfigY: any;
   constructor(option: InterfaceOption) {
     super(option);
-    this.type = option.type;
     this.render();
   }
   protected mouseMove = (e) => {

@@ -2,6 +2,7 @@ import { InterfaceOption } from "../Option";
 import { Axis } from "../plugins/Axis";
 import { Color } from "../plugins/Color";
 import { createElement, createHtmlElement, createRect, createText } from "../plugins/ElementFactory";
+import { Legend } from "../plugins/Legend";
 import { Tips } from "../plugins/Tips";
 
 interface InterfacePoint {
@@ -27,29 +28,40 @@ export class Base {
   protected elementPoint1: InterfacePoint;
   protected elementPoint2: InterfacePoint;
   protected elementPoint3: InterfacePoint;
-  protected title: string;
-  protected subtitle: string;
   protected colors: string[];
   protected padding: number[];
   protected slices: any[] = [];
   protected tips: any;
+  protected legend: any;
   protected currentSlice: any;
 
   constructor(option: InterfaceOption) {
     this.container = document.querySelector("#" + option.id);
-    this.type = "base";
+    this.type = option.type;
     this.data = option.data;
     this.containerWidth = option.width || 320;
     this.containerHeight = option.height || 240;
-    this.title = option.title || "";
-    this.subtitle = option.subtitle || "";
     this.padding = option.padding || [10, 10, 10, 10];
   }
   protected renderBase() {
     this.setWidthHeight();
-    this.renderTitle();
     this.renderSvg();
+    this.renderLegend();
     this.setLayout();
+  }
+  protected renderLegend() {
+    const legendType = {
+      bar: "rect",
+      heatmap: "rect",
+      line: "line",
+      percentage: "rect",
+      pie: "circle",
+    };
+    this.legend = new Legend(legendType[this.type]);
+    this.container.appendChild(this.legend.render());
+  }
+  protected updateLegend() {
+    //
   }
   protected setWidthHeight() {
     this.container.style.display = "inline-block";
@@ -107,16 +119,6 @@ export class Base {
         xmlns: "http://www.w3.org/2000/svg",
       });
     this.container.appendChild(this.svgElement);
-  }
-  protected renderTitle() {
-    const title = createHtmlElement("p", {
-      innerHTML: this.title,
-      styles: {
-        margin: 0,
-        textAlign: "center",
-      },
-    });
-    this.container.appendChild(title);
   }
   protected renderTips() {
     this.tips = new Tips();

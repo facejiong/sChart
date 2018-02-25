@@ -13,11 +13,15 @@ export class PercentageChart extends Base {
     this.colors = option.colors || colorClassfication;
     this.render();
   }
+  protected updateLegend() {
+    this.legend.updateData(this.slices);
+  }
   private render() {
     this.filterData();
     this.renderBase();
     this.setTop();
     this.renderPercentage();
+    this.updateLegend();
     this.renderTips();
   }
   private setTop() {

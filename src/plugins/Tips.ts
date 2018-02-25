@@ -4,37 +4,41 @@ export class Tips {
   private color: string;
   private text: string;
   private show: boolean;
-  private container: any;
+  private element: any;
   private data: any[] = [];
   constructor() {
     this.render();
   }
    public update(data: any[], x: number, y: number, hasUpdateData = true) {
     this.data = data;
-    this.container.style.display = "inline-block";
-    this.container.style.top = (y + 10) + "px";
-    this.container.style.left = (x + 10) + "px";
+    this.element.style.display = "inline-block";
+    this.element.style.top = (y + 10) + "px";
+    this.element.style.left = (x + 10) + "px";
     if (hasUpdateData) {
       this.renderData();
     }
   }
   public hide() {
-    this.container.style.display = "none";
+    this.element.style.display = "none";
   }
   private render() {
-    const container = document.createElement("div");
-    this.container = container;
-    container.style.display = "none";
-    container.style.padding = "10px";
-    container.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
-    container.style.borderRadius = "4px";
-    container.style.position = "fixed";
+    const element = createHtmlElement("div", {
+      className: "schart-tips",
+      styles: {
+        background: "rgba(0, 0, 0, 0.4)",
+        borderRadius: "4px",
+        display: "none",
+        padding: "10px",
+        position: "fixed",
+      },
+    });
+    this.element = element;
     this.renderData();
-    document.body.appendChild(container);
+    document.body.appendChild(element);
   }
   private clearNodes() {
-    while (this.container.hasChildNodes()) {
-      this.container.removeChild(this.container.firstChild);
+    while (this.element.hasChildNodes()) {
+      this.element.removeChild(this.element.firstChild);
     }
   }
   private renderData() {
@@ -68,7 +72,7 @@ export class Tips {
       });
       curContainer.appendChild(curColorContainer);
       curContainer.appendChild(curTextContainer);
-      this.container.appendChild(curContainer);
+      this.element.appendChild(curContainer);
     });
   }
   private calculatePosition(x: number, y: number) {
