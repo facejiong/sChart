@@ -12,6 +12,7 @@ export interface InterfaceOption {
   padding: number[]; // top, right, bottom, left
   // pie
   radius: number;
+  innerRadius: number;
   sortDataType: string; // 升序 降序
   // percentage
   percentageHeight: number;

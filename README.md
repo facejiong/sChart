@@ -33,7 +33,7 @@
 * ...or include within your HTML
 
   ```html
-    <script src="./Charts.js"></script>
+    <script src="./scharts.js"></script>
   ```
 
 #### Usage

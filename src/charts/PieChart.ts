@@ -1,6 +1,6 @@
 import { InterfaceOption } from "../Option";
 import { colorClassfication } from "../plugins/ColorSwatches";
-import { createElement, createPath, createText } from "../plugins/ElementFactory";
+import { createCircle, createElement, createPath, createText } from "../plugins/ElementFactory";
 import { Base } from "./Base";
 
 const ANGLE_RATIO = Math.PI / 180;
@@ -9,16 +9,16 @@ const FULL_ANGLE = 360;
 export class PieChart extends Base {
   private centerX: number;
   private centerY: number;
-  private opacity: number;
+  private innerRadius: number;
   private radius: number;
   private sortDataType: string;
 
   constructor(option: InterfaceOption) {
     super(option);
-    this.opacity = option.opacity || 0.8;
     this.colors = option.colors || colorClassfication;
     this.sortDataType = option.sortDataType || "descending";
     this.radius = option.radius;
+    this.innerRadius = option.innerRadius || 0;
     this.render();
   }
   protected updateLegend() {
@@ -29,6 +29,7 @@ export class PieChart extends Base {
     this.renderBase();
     this.setPosition();
     this.renderPie();
+    this.renderInnerCircle();
     this.updateLegend();
     this.renderTips();
   }
@@ -77,6 +78,13 @@ export class PieChart extends Base {
       });
     });
     this.svgElement.appendChild(pieElement);
+  }
+  private renderInnerCircle() {
+    const { centerX, centerY, innerRadius } = this;
+    if (innerRadius > 0) {
+      const c = createCircle("schart-pie-inner", centerX, centerY, innerRadius, "none", "#fff");
+      this.svgElement.appendChild(c);
+    }
   }
   private makeArcPath(startPosition, endPosition, angle) {
     const { centerX, centerY, radius } = this;

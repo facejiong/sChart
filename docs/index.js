@@ -26,7 +26,8 @@ var pieChart = new Chart({
 	data: data0,
 	type: 'pie', // or 'line', 'scatter', 'pie', 'percentage'
 	height: 250,
-	width: 640,
+  width: 640,
+  innerRadius: 60,
 	sortDataType: 'descending', // ascending descending none
 })
 console.log(pieChart)

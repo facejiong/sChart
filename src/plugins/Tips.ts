@@ -12,8 +12,8 @@ export class Tips {
    public update(data: any[], x: number, y: number, hasUpdateData = true) {
     this.data = data;
     this.element.style.display = "inline-block";
-    this.element.style.top = (y + 10) + "px";
-    this.element.style.left = (x + 10) + "px";
+    this.element.style.top = (y + 20) + "px";
+    this.element.style.left = (x + 20) + "px";
     if (hasUpdateData) {
       this.renderData();
     }
@@ -25,7 +25,7 @@ export class Tips {
     const element = createHtmlElement("div", {
       className: "schart-tips",
       styles: {
-        background: "rgba(0, 0, 0, 0.4)",
+        background: "rgba(0, 0, 0, 0.3)",
         borderRadius: "4px",
         display: "none",
         padding: "10px",
