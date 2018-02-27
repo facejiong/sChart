@@ -8,8 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     library: 'Chart',
     filename: 'schart.js',
-    libraryTarget: 'umd',
-    umdNamedDefine: true
+    libraryTarget: 'umd'
   },
   module: {
     rules: [

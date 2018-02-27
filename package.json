@@ -1,8 +1,8 @@
 {
-  "name": "scharts",
-  "version": "0.0.1",
+  "name": "s-chart",
+  "version": "0.1.0",
   "description": "svg charts",
-  "main": "./dist/Chart.js",
+  "main": "./lib/schart.js",
   "scripts": {
     "example": "parcel ./docs/index.html -p 1235",
     "build": "webpack --progress",

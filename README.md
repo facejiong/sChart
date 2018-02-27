@@ -27,13 +27,13 @@
 
   and include in your project:
   ```js
-  import Chart from "scharts"
+  import Chart from "s-chart"
   ```
 
 * ...or include within your HTML
 
   ```html
-    <script src="./scharts.js"></script>
+    <script src="./schart.js"></script>
   ```
 
 #### Usage
@@ -82,7 +82,7 @@ If you want to contribute:
 
 #### Updates
 
-##### v0.0.1
+##### v0.1.0
 - The very first version out, with pie, percentage, bars, lines and scatter.
 
 #### License
