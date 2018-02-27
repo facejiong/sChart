@@ -9,7 +9,7 @@
 [![](https://img.shields.io/travis/facejiong/sCharts.svg?style=flat-square)](https://travis-ci.org/facejiong/sCharts)
 [![](https://img.shields.io/coveralls/github/facejiong/sCharts.svg?style=flat-square)](https://coveralls.io/github/facejiong/sCharts)
 [![](https://david-dm.org/facejiong/sCharts/status.svg?style=flat-square)](https://david-dm.org/facejiong/sCharts)
-[![](https://img.shields.io/npm/v/sCharts.svg?style=flat-square)](https://www.npmjs.com/package/sCharts)
+[![](https://img.shields.io/npm/v/s-chart.svg?style=flat-square)](https://www.npmjs.com/package/sCharts)
 
 
 ### Contents
@@ -22,7 +22,7 @@
 * Install via [`npm`](https://www.npmjs.com/get-npm):
 
   ```console
-  $ npm install scharts
+  $ npm install s-chart
   ```
 
   and include in your project:
