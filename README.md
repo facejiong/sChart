@@ -8,7 +8,7 @@
 
 [![](https://img.shields.io/travis/facejiong/sCharts.svg?style=flat-square)](https://travis-ci.org/facejiong/sCharts)
 [![](https://img.shields.io/coveralls/github/facejiong/sCharts.svg?style=flat-square)](https://coveralls.io/github/facejiong/sCharts)
-[![](https://david-dm.org/facejiong/sChart/status.svg?style=flat-square)](https://david-dm.org/facejiong/sChart)
+[![](https://david-dm.org/facejiong/sCharts/status.svg?style=flat-square)](https://david-dm.org/facejiong/sChart)
 [![](https://img.shields.io/npm/v/s-chart.svg?style=flat-square)](https://www.npmjs.com/package/s-chart)
 
 
