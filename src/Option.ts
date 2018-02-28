@@ -2,13 +2,11 @@ export interface InterfaceOption {
   // shared
   id: string;
   type: string;
+  subType: string;
   data: any;
   width: number;
   height: number;
-  title: string;
-  subtitle: string;
   colors: string[];
-  opacity: number;
   padding: number[]; // top, right, bottom, left
   // pie
   radius: number;
