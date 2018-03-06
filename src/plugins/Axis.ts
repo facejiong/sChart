@@ -30,8 +30,8 @@ export class Axis {
     this.height = this.elementPoint0.y - this.elementPoint3.y;
   }
   public render() {
-    this.renderVertical();
     this.renderHorizontal();
+    this.renderVertical();
     return this.element;
   }
   // 纵轴
@@ -39,8 +39,18 @@ export class Axis {
     const ticks = createElement("g", { className: "schart-axis-horizontal-ticks" });
     this.horizontalData.map((cur, index) => {
       const tick = createElement("g", { className: "schart-axis-horizontal-tick" });
-      const line = createLine("schart-axis-horizontal-line", this.elementPoint0.x,
-        this.elementPoint0.y + cur.distance, this.elementPoint1.x, this.elementPoint0.y + cur.distance, "#F2F4F5");
+      const line = createElement("line", {
+        className: "schart-axis-horizontal-text",
+        styles: {
+          "stroke": "#F2F4F5",
+          "stroke-dasharray": 4,
+          "stroke-width": 1,
+        },
+        x1: this.elementPoint0.x,
+        x2: this.elementPoint1.x,
+        y1: this.elementPoint0.y + cur.distance,
+        y2: this.elementPoint0.y + cur.distance,
+      });
       const text = createElement("text", {
         className: "schart-axis-horizontal-text",
         dy: ".32em",
