@@ -41,7 +41,7 @@ export class Base {
     this.data = option.data;
     this.containerWidth = option.width || 320;
     this.containerHeight = option.height || 240;
-    this.padding = option.padding || [10, 10, 10, 10];
+    this.padding = option.padding || [0, 0, 0, 0];
   }
   protected renderBase() {
     this.setWidthHeight();
@@ -69,7 +69,7 @@ export class Base {
     this.container.style.height = this.containerWidth;
     this.container.style.width = this.containerHeight;
     this.svgWidth = this.containerWidth - this.padding[1] - this.padding[3];
-    this.svgHeight = this.containerHeight - this.padding[0] - this.padding[2] - 20;
+    this.svgHeight = this.containerHeight - this.padding[0] - this.padding[2];
     this.svgPoint0 = {
       x: 0,
       y: 0,
