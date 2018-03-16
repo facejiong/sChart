@@ -80,6 +80,9 @@ export class Legend {
       curContainer.appendChild(curColorContainer);
       curContainer.appendChild(curTextContainer);
       this.element.appendChild(curContainer);
+      this.element.addEventListener("click", (e) => {
+        console.log(e);
+      });
     });
   }
 }
