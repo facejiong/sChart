@@ -122,10 +122,8 @@ export class Base {
   }
   protected renderTips() {
     this.tips = new Tips();
-    this.slices.map((current) => {
-      current.slice.addEventListener("mousemove", this.mouseMove);
-      current.slice.addEventListener("mouseleave", this.mouseLeave);
-    });
+    this.svgElement.addEventListener("mousemove", this.mouseMove);
+    this.svgElement.addEventListener("mouseleave", this.mouseLeave);
   }
   protected mouseMove = (e) => {
     this.slices.map((current, index) => {
